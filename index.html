@@ -1451,8 +1451,9 @@ footer {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 48px;
+  grid-template-columns: minmax(0, 1.1fr) minmax(520px, 0.9fr);
+  gap: clamp(56px, 9vw, 180px);
+  align-items: start;
   margin-bottom: 48px;
 }
 .footer-brand .fb-title {
@@ -1483,15 +1484,25 @@ footer {
   text-transform: uppercase;
   margin-bottom: 16px;
 }
-.footer-col ul { list-style: none; }
+.footer-col {
+  width: 100%;
+  max-width: 720px;
+}
+.footer-col ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px 24px;
+  list-style: none;
+}
 .footer-col ul li {
   font-size: 12px;
   color: var(--grey);
   line-height: 1.8;
   font-weight: 300;
 }
+.footer-col ul li:first-child { grid-column: 1 / -1; }
 .footer-col ul li strong { color: var(--grey-light); }
-.footer-col ul li em { color: rgba(201,168,76,0.6); font-style: normal; }
+.footer-col ul li em { color: rgba(201,168,76,0.75); font-style: normal; }
 
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.05);
@@ -1557,6 +1568,8 @@ footer {
   .goat-totals { grid-template-columns: repeat(2, 1fr); }
   footer { padding: 40px 24px; }
   .footer-grid { grid-template-columns: 1fr; }
+  .footer-col ul { grid-template-columns: 1fr; }
+  .footer-col ul li:first-child { grid-column: auto; }
   #nav-dots, #progress-car { display: none; }
 }
 
