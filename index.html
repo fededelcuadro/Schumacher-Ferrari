@@ -1,0 +1,4972 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOS AÑOS DORADOS — Michael Schumacher: El Kaiser de Ferrari</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─── */
+:root {
+  --black: #0A0A0A;
+  --black-mid: #141414;
+  --black-card: #1C1C1C;
+  --red: #CC0000;
+  --red-bright: #FF1801;
+  --gold: #C9A84C;
+  --gold-light: #E8C96C;
+  --white: #F2F2F2;
+  --grey: #888;
+  --grey-light: #BABABA;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
+
+/* ─── PROGRESS CAR ─── */
+#progress-car {
+  position: fixed;
+  right: 18px;
+  top: 0;
+  width: 32px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  pointer-events: none;
+}
+#progress-track {
+  width: 2px;
+  height: 100%;
+  background: rgba(200,168,76,0.15);
+  position: relative;
+  border-radius: 2px;
+}
+#progress-fill {
+  width: 2px;
+  height: 0%;
+  background: linear-gradient(to bottom, var(--gold), var(--red));
+  border-radius: 2px;
+  transition: height 0.1s linear;
+  position: absolute;
+  top: 0;
+}
+#car-icon {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  transition: top 0.1s linear;
+  top: 0;
+  filter: drop-shadow(0 0 6px var(--red));
+}
+
+/* ─── NAV DOTS ─── */
+#nav-dots {
+  position: fixed;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(200,168,76,0.3);
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+}
+.nav-dot.active { background: var(--gold); transform: scale(1.5); }
+.nav-dot:hover { background: var(--gold-light); }
+.nav-dot::after {
+  content: attr(data-label);
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--grey);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.nav-dot:hover::after, .nav-dot.active::after { opacity: 1; }
+
+/* ─── TOP NAV ─── */
+#topnav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 999;
+  padding: 16px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+  transition: background 0.3s;
+}
+#topnav .logo {
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: var(--gold);
+}
+#topnav .logo span { color: var(--red); }
+.year-nav {
+  display: flex;
+  gap: 24px;
+}
+.year-nav a {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--grey);
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+.year-nav a:hover { color: var(--gold); }
+
+/* ─── SPEED LINES ─── */
+.speed-lines {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.06;
+}
+.speed-lines span {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--white), transparent);
+  animation: speedLine 1.5s infinite linear;
+}
+
+@keyframes speedLine {
+  0% { transform: translateX(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateX(100vw); opacity: 0; }
+}
+
+/* ─── HERO ─── */
+#hero {
+  min-height: 100vh;
+  position: relative;
+  flex-direction: column;
+  padding: 124px 80px 64px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;     /* Centra verticalmente */
+  height: 100vh;           /* Opcional: toma toda la altura de la pantalla */
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(to bottom, rgba(10,10,10,0.30) 0%, rgba(10,10,10,0.55) 55%, rgba(10,10,10,0.96) 100%);
+  z-index: 0;
+}
+
+/* PLACEHOLDER para video/imagen hero */
+.hero-media-placeholder {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 70% 40%, rgba(204,0,0,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 30% 60%, rgba(201,168,76,0.08) 0%, transparent 50%);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.hero-media-placeholder .media-box {
+  width: 55%;
+  height: 70%;
+  border: 1px dashed rgba(201,168,76,0.2);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: rgba(201,168,76,0.3);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 2px;
+  position: absolute;
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.media-box .icon { font-size: 40px; opacity: 0.5; }
+
+/* Decorative red stripe */
+.hero-stripe {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: linear-gradient(to bottom, transparent, var(--red) 30%, var(--gold) 70%, transparent);
+  z-index: 3;
+}
+
+.hero-content { position: relative; z-index: 3; max-width: 1000px; margin: 0 auto; text-align: center; }
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--red);
+}
+
+.hero-title {
+  font-family: var(--font-mono);
+  font-size: 30px;
+  letter-spacing: 87px;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.hero-title .gold {
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: clamp(128px, 20vw, 256px);
+  line-height: 0.9;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.hero-title .red { color: var(--red); }
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 3vw, 32px);
+  color: var(--grey-light);
+  letter-spacing: 3px;
+  margin-bottom: 24px;
+}
+
+.hero-subtitle .red { color: var(--red); }
+
+.hero-desc {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--grey-light);
+  max-width: 740px;
+  margin: 0 auto 32px;
+  font-weight: 300;
+}
+
+.hero-metrics {
+  display: flex;
+  gap: 210px;
+  margin-bottom: 0;
+  justify-content: center;
+}
+.metric {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+.metric .number {
+  font-family: var(--font-display);
+  font-size: 56px;
+  line-height: 1;
+  color: var(--gold);
+}
+.metric .number.red { color: var(--red); }
+.metric .label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--grey);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.scroll-hint {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--grey);
+  animation: bounce 2s infinite;
+}
+.scroll-wheel {
+  width: 22px;
+  height: 36px;
+  border: 1.5px solid var(--grey);
+  border-radius: 11px;
+  position: relative;
+}
+.scroll-wheel::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 2px;
+  animation: scrollDot 2s infinite;
+}
+
+@keyframes scrollDot {
+  0% { top: 6px; opacity: 1; }
+  80% { top: 20px; opacity: 0; }
+  100% { top: 6px; opacity: 0; }
+}
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+/* ─── SECTION COMMON ─── */
+section { position: relative; }
+
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--red);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+/* ─── INTRO ─── */
+#intro {
+  padding: 100px 80px;
+  background: var(--black);
+  border-top: 1px solid rgba(201,168,76,0.1);
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.intro-text p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--grey-light);
+  margin-bottom: 16px;
+  font-weight: 300;
+}
+.intro-text p strong {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* Timeline intro */
+.timeline-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+.timeline-intro::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--red), var(--gold));
+}
+.tl-item {
+  display: flex;
+  gap: 24px;
+  padding-bottom: 32px;
+  position: relative;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all 0.5s;
+}
+.tl-item.visible { opacity: 1; transform: translateX(0); }
+.tl-dot {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--black-card);
+  border: 1px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--gold);
+  font-weight: 700;
+}
+.tl-content {
+  padding-top: 8px;
+}
+.tl-year {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.tl-desc {
+  font-size: 13px;
+  color: var(--grey-light);
+  line-height: 1.6;
+  font-weight: 300;
+}
+.tl-desc em { color: var(--red); font-style: normal; }
+
+/* ─── CHAPTER WRAPPER ─── */
+#chapters { background: var(--black); }
+
+.empty {
+  padding-bottom: 800px;
+}
+
+.halfempty {
+  padding-bottom: 400px;
+}
+
+.quadempty {
+  padding-bottom: 600px;
+}
+
+.grafico-container {
+  display: grid;
+  place-items: center;
+}
+
+.grafico-container .grafico {
+  width: 80%;
+}
+
+/* ─── STICKY YEAR CHAPTER ─── */
+.chapter {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  min-height: 100vh;
+  position: relative;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.chapter-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 60px 60px 80px;
+  overflow: hidden;
+}
+
+.sch-corner-photo {
+  position: absolute;
+  bottom: 0;
+  max-height: 500px;
+  max-width: 100%; /* Controla el ancho de la foto para que no tape los textos */
+  height: auto;
+  pointer-events: none; /* Evita que interfiera si el usuario hace clic en esa zona */
+  z-index: 1;
+  
+  /* El truco para volverla blanco y negro directo en CSS */
+  filter: grayscale(100%); 
+  
+  /* Opcional: le da una leve transparencia para que se fusione con el fondo negro */
+  opacity: 0.2;
+
+  z-index: -1;
+}
+
+.chapter-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--red);
+  padding: 4px 12px;
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--white);
+  margin-bottom: 16px;
+  width: fit-content;
+}
+
+.chapter-year {
+  font-family: var(--font-display);
+  font-size: clamp(90px, 12vw, 150px);
+  line-height: 0.9;
+  color: var(--gold);
+  margin-bottom: 500px;
+}
+
+.chapter-tagline {
+  font-family: var(--font-display);
+  font-size: clamp(50px, 9vw, 65px);
+  color: var(--white);
+  margin-bottom: -20px;
+  text-transform: uppercase;
+}
+
+.chapter-desc {
+  font-size: 16px;
+  /* line-height: 1.8; */
+  color: var(--grey-light);
+  font-weight: 300;
+  /* margin-bottom: 32px; */
+}
+
+/* Stats pills */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.stat-pill {
+  /*background: var(--black-card);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 4px;*/
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: center;
+}
+.stat-pill .s-val {
+  font-family: var(--font-display);
+  font-size: 56px;
+  color: var(--gold);
+  line-height: 1;
+}
+.stat-pill .s-val.red { color: var(--red); }
+.stat-pill .s-key {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--grey);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* Race pills */
+.race-pills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+  gap: 10px;
+}
+.race-pill {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: default;
+  transition: transform 0.2s;
+}
+.race-pill:hover { transform: scale(1.2); }
+.race-pill.p1 { background: var(--gold); color: var(--black); }
+.race-pill.p2 { background: #C0C0C0; color: var(--black); }
+.race-pill.p3 { background: #b08d57; color: var(--black); }
+.race-pill.dnf { background: rgba(204,0,0,0.2); color: var(--red); border: 1px solid rgba(204,0,0,0.3); }
+.race-pill.other { background: rgba(255,255,255,0.06); color: var(--grey); border: 1px solid rgba(255,255,255,0.08); }
+.race-pill.label {
+  width: auto;
+  padding: 0 8px;
+  background: none;
+  color: var(--grey);
+  font-size: 9px;
+  letter-spacing: 1px;
+  cursor: default;
+}
+
+/* Right content panel */
+.chapter-content {
+  padding: 80px 80px 80px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Content cards */
+.content-card {
+  /*background: var(--black-card);
+  border: 1px solid rgba(255,255,255,0.06);*/
+  border-radius: 6px;
+  padding: 24px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.content-card.visible { opacity: 1; transform: translateY(0); }
+.content-card:nth-child(2) { transition-delay: 0.1s; }
+.content-card:nth-child(3) { transition-delay: 0.2s; }
+.content-card:nth-child(4) { transition-delay: 0.3s; }
+.content-card:nth-child(5) { transition-delay: 0.4s; }
+
+.card-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--red);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-label::before {
+  content: '';
+  display: block;
+  width: 16px;
+  height: 1px;
+  background: var(--red);
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: clamp(50px, 9vw, 65px);
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.card-text {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--grey-light);
+  font-weight: 300;
+}
+
+/* Media placeholder */
+.media-placeholder {
+  width: 100%;
+  aspect-ratio: 16/9;
+  /*border: 1px dashed rgba(201,168,76,0.2);*/
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: rgba(201,168,76,0.3);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  background: rgba(201,168,76,0.02);
+  margin-top: 8px;
+}
+.media-placeholder .icon { font-size: 28px; opacity: 0.5; }
+
+/* Video container */
+.video-container {
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+  background-color: #000;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  border-radius: 6px;
+}
+
+video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Control Container Wrapper for smooth hover UI */
+.video-controls, .timeline-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Timeline Layout */
+.timeline-container {
+  bottom: 50px;
+  padding: 0 15px;
+}
+
+/* Buttons and Flex Layout */
+.video-controls {
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px 10px 15px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+}
+
+.volume-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+#volumeSlider {
+  width: 0px; /* Oculto por defecto */
+  opacity: 0;
+  accent-color: #fff; /* Color del deslizador */
+  cursor: pointer;
+  transition: width 0.2s ease, opacity 0.2s ease;
+  height: 4px;
+}
+
+/* Muestra la barra de volumen cuando pasas el mouse sobre el control de volumen */
+.volume-container:hover #volumeSlider {
+  width: 60px; /* Se expande lateralmente */
+  opacity: 1;
+}
+
+.controls-left, .controls-right {
+  display: flex;
+  gap: 10px;
+}
+
+/* Active Hover State (Handled by JS toggling a class) */
+.video-container.show-controls .video-controls,
+.video-container.show-controls .timeline-container {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Buttons & SVGs Styling */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button svg {
+  width: 28px;
+  height: 28px;
+  fill: #fff;
+  transition: transform 0.1s ease;
+}
+
+button:hover svg {
+  transform: scale(1.1);
+}
+
+/* Seek Bar Custom Styling */
+#seekBar {
+  width: 100%;
+  cursor: pointer;
+  accent-color: #f00; /* YouTube red slider */
+  margin: 0;
+}
+
+/* ==========================================================================
+   GALERÍAS HORIZONTALES MULTI-INSTANCIA (UNIVERSAL)
+   El scroll vertical mueve las fotos en horizontal de forma dinámica.
+   ========================================================================== */
+
+.gallery-zone {
+  position: relative;
+  height: 300vh; /* Fallback; se recalcula por JS según la cantidad de fotos */
+  box-sizing: border-box;
+}
+
+.gallery-stage {
+  position: sticky;
+  top: 0;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* CAMBIO CLAVE: Mudamos el overflow: hidden aquí para asegurarnos de que */
+  /* ninguna galería desborde la pantalla hacia los costados en ningún capítulo */
+  overflow: hidden;
+  padding-top: 200px;
+}
+
+.gallery-track {
+  display: flex;
+  gap: 10px;
+  height: 100%;
+  will-change: transform;
+  padding-right: 0 !important;
+}
+
+.gallery-item {
+  /* Mantiene las fotos ocupando el 85% del ancho de la pantalla */
+  flex: 0 0 85%; 
+  height: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(201,168,76,0.04);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-caption {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: rgba(232,201,108,0.6);
+  background: rgba(10,10,10,0.5);
+  padding: 3px 8px;
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+/* Quote */
+.quote-card {
+  /* border-left: 3px solid var(--gold); */
+  padding: 20px 24px;
+  /* background: rgba(201,168,76,0.04); */
+  /* border-radius: 0 6px 6px 0; */
+}
+.quote-text {
+  font-family: var(--font-body);
+  font-size: 40px;
+  font-style: italic;
+  color: var(--gold-light);
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+.quote-attr {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--grey);
+  letter-spacing: 2px;
+}
+
+/* Audio player placeholder */
+.audio-player {
+  background: var(--black-card);
+  border: 1px solid rgba(204,0,0,0.3);
+  border-radius: 6px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.play-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--red);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  transition: all 0.3s;
+  box-shadow: 0 0 20px rgba(204,0,0,0.3);
+}
+.play-btn:hover { background: var(--red-bright); box-shadow: 0 0 30px rgba(255,24,1,0.4); }
+.audio-info { flex: 1; }
+.audio-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--white);
+}
+.audio-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--grey);
+  letter-spacing: 1.5px;
+  margin-top: 2px;
+}
+.audio-waveform {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 32px;
+}
+.audio-waveform span {
+  display: block;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--red);
+  animation: waveAnim 0.8s ease-in-out infinite alternate;
+}
+.audio-waveform span:nth-child(1) { height: 8px; animation-delay: 0s; }
+.audio-waveform span:nth-child(2) { height: 20px; animation-delay: 0.1s; }
+.audio-waveform span:nth-child(3) { height: 14px; animation-delay: 0.2s; }
+.audio-waveform span:nth-child(4) { height: 28px; animation-delay: 0.3s; }
+.audio-waveform span:nth-child(5) { height: 12px; animation-delay: 0.4s; }
+.audio-waveform span:nth-child(6) { height: 24px; animation-delay: 0.15s; }
+.audio-waveform span:nth-child(7) { height: 18px; animation-delay: 0.25s; }
+.audio-waveform span:nth-child(8) { height: 10px; animation-delay: 0.35s; }
+
+@keyframes waveAnim {
+  from { opacity: 0.3; }
+  to { opacity: 1; }
+}
+
+/* Bar chart */
+.bar-chart { display: flex; flex-direction: column; gap: 10px; }
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+.bar-label { width: 40px; color: var(--grey); text-align: right; }
+.bar-track { flex: 1; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; }
+.bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(to right, var(--red), var(--gold));
+  width: 0%;
+  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.bar-val { width: 28px; color: var(--gold); font-weight: 700; font-size: 12px; }
+
+/* Data table */
+.data-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 13px;
+}
+.data-row:last-child { border-bottom: none; }
+.data-row .key { color: var(--grey); }
+.data-row .val { color: var(--gold); font-family: var(--font-mono); font-weight: 700; }
+.data-row .val.red { color: var(--red); }
+.data-row .val.white { color: var(--white); }
+
+/* ---- MOSAICO 2004 ---- */
+/* Cuando una foto se expande, pasa a flotar por encima de todo */
+/* ==========================================================================
+   FOTO EXPANDIDA: Debe ir por encima del nuevo z-index del overlay
+   ========================================================================== */
+.mosaic-item.is-expanded {
+  position: fixed !important;
+  top: 5vh !important;
+  left: 5vw !important;
+  width: 90vw !important;
+  height: 90vh !important;
+  
+  /* Debe ser mayor que el z-index del overlay */
+  z-index: 1000000 !important; 
+  
+  /* Volvemos a limpiar cualquier desvío de posición */
+  transform: translate(0, 0) !important; 
+  
+  border-radius: 12px !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9) !important;
+  border: 1px solid rgba(201, 168, 76, 0.5) !important;
+  cursor: zoom-out;
+}
+
+/* Permitir clic común en las fotos que no están expandidas */
+.mosaic-item:not(.is-expanded) {
+  cursor: zoom-in;
+}
+
+/* Transición suave para el tamaño y posicionamiento */
+.mosaic-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, top 0.4s ease, left 0.4s ease, width 0.4s ease, height 0.4s ease;
+}
+
+/* ==========================================================================
+   OVERLAY TOTAL: Blindado contra contenedores padres
+   ========================================================================== */
+.mosaic-overlay {
+  position: fixed !important;
+  /* Forzamos coordenadas en las esquinas extremas de la pantalla */
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  
+  /* Usamos vw y vh al 100% pero blindados */
+  width: 100vw !important;
+  height: 100vh !important;
+  
+  background: rgba(10, 10, 10, 0.85) !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+  
+  /* Un z-index ridículamente alto para saltar cualquier restricción */
+  z-index: 999999 !important; 
+  
+  margin: 0 !important;
+  padding: 0 !important;
+  
+  /* Anulamos cualquier traslación que le intente meter el contenedor padre */
+  transform: translate(0, 0) !important;
+  
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.mosaic-overlay.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mosaic-container {
+  display: grid;
+  /* Creamos 3 columnas exactamente iguales */
+  grid-template-columns: repeat(3, 1fr);
+  /* Creamos 2 filas (podés cambiar el 1.2fr 1fr por 1fr 1fr si las querés de igual alto) */
+  grid-template-rows: 1.2fr 1fr;
+  
+  gap: 12px;
+  width: 100%;
+  height: 550px; /* Alto total del mosaico */
+  box-sizing: border-box;
+}
+
+/* Estilos base para los cuadrantes e imágenes */
+.mosaic-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid rgba(201, 168, 76, 0.2);
+}
+
+.mosaic-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mosaic-item:hover img {
+  transform: scale(1.03);
+}
+
+/* ─── CONTROL DE LAS PROPORCIONES ASIMÉTRICAS ─── */
+
+/* Fila de arriba: 2 columnas a la izquierda, 1 a la derecha */
+.item-top-left {
+  grid-column: span 2;
+}
+.item-top-right {
+  grid-column: span 1;
+}
+
+/* Fila de abajo: invertido (1 columna a la izquierda, 2 a la derecha) */
+.item-bottom-left {
+  grid-column: span 1;
+}
+.item-bottom-right {
+  grid-column: span 2;
+}
+
+/* ─── VIZ SECTION ─── */
+#visualizations {
+  padding: 0 80px 100px;
+  background: var(--black-mid);
+  border-top: 1px solid rgba(201,168,76,0.1);
+  overflow: visible;
+}
+
+.viz-transition {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.viz-transition::before {
+  content: '';
+  position: absolute;
+  inset: 0 -80px;
+  background:
+    linear-gradient(180deg, rgba(10,10,10,0.9), rgba(20,20,20,0.55) 45%, rgba(20,20,20,0.98)),
+    radial-gradient(ellipse at 50% 50%, rgba(204,0,0,0.16), transparent 52%);
+  z-index: -2;
+}
+
+.viz-transition::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(70vw, 760px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--red), var(--gold), transparent);
+  transform: translate(-50%, 72px) scaleX(0);
+  transform-origin: center;
+  opacity: 0;
+  z-index: -1;
+}
+
+.viz-transition.visible::after {
+  animation: vizRuleIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+
+.viz-transition-inner {
+  transform: translateY(26px) scale(0.98);
+  opacity: 0;
+}
+
+.viz-transition.visible .viz-transition-inner {
+  animation: vizTitleIn 1.15s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.viz-transition-title {
+  font-family: var(--font-display);
+  font-size: clamp(58px, 11vw, 132px);
+  line-height: 0.88;
+  color: var(--white);
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.viz-transition-title span {
+  color: var(--gold);
+}
+
+.viz-transition-kicker {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--red-bright);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+@keyframes vizTitleIn {
+  0% { opacity: 0; transform: translateY(34px) scale(0.96); filter: blur(8px); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+@keyframes vizRuleIn {
+  0% { opacity: 0; transform: translate(-50%, 72px) scaleX(0); }
+  100% { opacity: 1; transform: translate(-50%, 72px) scaleX(1); }
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 48px auto 0;
+}
+
+.viz-card {
+  background: var(--black-card);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  padding: 28px;
+}
+.viz-card.full { grid-column: 1 / -1; }
+
+.viz-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--red);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.viz-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+/* Victories chart */
+.victories-chart { display: flex; align-items: flex-end; gap: 16px; height: 160px; }
+.vc-bar-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; flex: 1; }
+.vc-bar {
+  width: 100%;
+  border-radius: 3px 3px 0 0;
+  position: relative;
+  transition: height 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.vc-bar.active { background: linear-gradient(to top, var(--red), var(--gold)); }
+.vc-bar.inactive { background: rgba(255,255,255,0.08); }
+.vc-val {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--gold);
+  font-weight: 700;
+}
+.vc-year {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--grey);
+}
+
+/* World map placeholder */
+.map-placeholder {
+  width: 100%;
+  height: 300px;
+  border: 1px dashed rgba(201,168,76,0.2);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: rgba(201,168,76,0.3);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  background: rgba(201,168,76,0.02);
+  position: relative;
+  overflow: hidden;
+}
+.map-placeholder .icon { font-size: 40px; opacity: 0.4; }
+
+/* Points line chart */
+.line-chart-wrap { position: relative; height: 160px; }
+.line-chart-svg { width: 100%; height: 100%; }
+
+/* ─── GOAT SECTION ─── */
+#goat {
+  padding: 120px 80px;
+  background: var(--black);
+  border-top: 1px solid rgba(201,168,76,0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.goat-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.06) 0%, transparent 60%);
+}
+
+.goat-header { text-align: center; margin-bottom: 80px; position: relative; z-index: 1; }
+
+.goat-title {
+  font-family: var(--font-display);
+  font-size: clamp(60px, 10vw, 120px);
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.goat-title .accent { color: var(--gold); }
+
+.goat-sub {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--grey);
+  letter-spacing: 4px;
+}
+
+/* Totals row */
+.goat-totals {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.goat-stat {
+  text-align: center;
+  padding: 32px 20px;
+  background: var(--black-card);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+.goat-stat::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--red), var(--gold));
+}
+.goat-stat .gs-num {
+  font-family: var(--font-display);
+  font-size: 72px;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.goat-stat .gs-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--grey);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Comparison */
+.comparison-section {
+  max-width: 1000px;
+  margin: 0 auto 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.comparison-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--white);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.comparison-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.comp-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 60px;
+  align-items: center;
+  gap: 16px;
+}
+.comp-name { font-size: 13px; color: var(--grey-light); font-weight: 500; }
+.comp-name.schumi { color: var(--gold); font-weight: 700; }
+.comp-bar-track { height: 10px; background: rgba(255,255,255,0.05); border-radius: 5px; overflow: hidden; }
+.comp-bar-fill { height: 100%; border-radius: 5px; transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1); width: 0%; }
+.comp-bar-fill.schumi { background: linear-gradient(to right, var(--red), var(--gold)); }
+.comp-bar-fill.other { background: rgba(255,255,255,0.2); }
+.comp-val { font-family: var(--font-mono); font-size: 12px; color: var(--grey); font-weight: 700; text-align: right; }
+.comp-val.schumi { color: var(--gold); }
+
+/* Final question */
+.final-question {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.fq-text {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 52px);
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 32px;
+}
+.fq-text .q { color: var(--gold); }
+.fq-reflection {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--grey-light);
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+.fq-reflection strong { color: var(--white); }
+.fq-rule {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 32px auto;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: #080808;
+  border-top: 1px solid rgba(201,168,76,0.1);
+  padding: 60px 80px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+.footer-brand .fb-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.footer-brand .fb-sub {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--grey);
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+.footer-brand p {
+  font-size: 12px;
+  color: var(--grey);
+  line-height: 1.6;
+}
+
+.footer-col h4 {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--red);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.footer-col ul { list-style: none; }
+.footer-col ul li {
+  font-size: 12px;
+  color: var(--grey);
+  line-height: 1.8;
+  font-weight: 300;
+}
+.footer-col ul li strong { color: var(--grey-light); }
+.footer-col ul li em { color: rgba(201,168,76,0.6); font-style: normal; }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-bottom p {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--grey);
+  letter-spacing: 1px;
+}
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 16px;
+  letter-spacing: 4px;
+  color: rgba(201,168,76,0.3);
+}
+
+/* ─── DIVIDER ─── */
+.divider-red {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--red) 20%, var(--gold) 50%, var(--red) 80%, transparent);
+  opacity: 0.4;
+}
+
+.divider-grey {
+  height: 1px;
+  background: var(--grey-light);
+  opacity: 0.4;
+}
+
+/* ─── UTILS ─── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.text-gold { color: var(--gold); }
+.text-red { color: var(--red); }
+
+/* ─── RESPONSIVE HINTS ─── */
+@media (max-width: 900px) {
+  .chapter { grid-template-columns: 1fr; }
+  .chapter-sticky { position: relative; height: auto; min-height: 50vh; }
+  #topnav { padding: 12px 24px; }
+  .year-nav { display: none; }
+  #hero { padding: 100px 24px 48px; }
+  #intro { padding: 0; }
+  .intro-grid { grid-template-columns: 1fr; gap: 48px; }
+  .chapter-sticky { padding: 40px 24px; }
+  .chapter-content { padding: 40px 24px; }
+  #visualizations { padding: 60px 24px; }
+  .viz-grid { grid-template-columns: 1fr; }
+  #goat { padding: 80px 24px; }
+  .goat-totals { grid-template-columns: repeat(2, 1fr); }
+  footer { padding: 40px 24px; }
+  .footer-grid { grid-template-columns: 1fr; }
+  #nav-dots, #progress-car { display: none; }
+}
+
+/* ─── TRANSITIONS BETWEEN CHAPTERS ─── */
+.chapter-separator {
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--red) 30%, var(--gold) 50%, var(--red) 70%, transparent);
+  opacity: 0.3;
+}
+
+/* Sticky year label on right while scrolling */
+.year-marker {
+  position: sticky;
+  top: 48%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Red starting lights decoration */
+.starting-lights {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+.light {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 8px var(--red);
+  animation: lightPulse 2s ease-in-out infinite;
+}
+.light:nth-child(2) { animation-delay: 0.2s; }
+.light:nth-child(3) { animation-delay: 0.4s; }
+.light:nth-child(4) { animation-delay: 0.6s; }
+.light:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes lightPulse {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ══════════════════ HERO VIDEO + ESCUDO FERRARI ══════════════════ */
+.hero-video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(50%)
+}
+#hero .hero-bg { z-index: 1; }      /* gradiente oscurecedor por encima del video */
+#hero .speed-lines { z-index: 2; }
+
+.metric-logo { align-items: center; }
+.ferrari-emblem {
+  width: 62px; height: 62px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px; overflow: hidden; position: relative;
+}
+.ferrari-emblem img { width: 100%; height: 100%; object-fit: contain; }
+/* Placeholder SOLO si assets/ferrari-logo.png no carga */
+.ferrari-emblem.is-fallback {
+  background: linear-gradient(180deg, #f6c700 0%, #e6b300 100%);
+  box-shadow: 0 0 20px rgba(246,199,0,0.25);
+}
+.ferrari-emblem.is-fallback img { display: none; }
+.ferrari-emblem.is-fallback::before {            /* franja tricolor italiana (no es marca registrada) */
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 8px;
+  background: linear-gradient(to right, #008c45 33.3%, #ffffff 33.3% 66.6%, #cd212a 66.6%);
+}
+.ferrari-emblem.is-fallback::after {
+  content: 'SF'; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -40%);
+  font-family: var(--font-display); font-size: 28px; letter-spacing: 1px; color: #141414;
+}
+
+/* ══════════════════ ACTO 1 · EL PESO DE LA SEQUÍA ══════════════════ */
+#intro { padding: 0; background: #060606; border-top: 1px solid rgba(201,168,76,0.1); }
+
+.drought-track { position: relative; height: 640vh; }
+.drought-stage {
+  position: sticky; top: 0; height: 100vh; overflow: hidden;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 70px 24px 180px;
+}
+.drought-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background: radial-gradient(ellipse at 50% 45%, #2a0202 0%, #060606 80%);
+  transition: background 0.7s ease;
+}
+.drought-vignette {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 38%, rgba(0,0,0,0.88) 100%);
+}
+/* Foto lateral de la sequía: entra desde un costado y se funde hacia el centro */
+.drought-photo {
+  position: absolute; top: 0; height: 100%; width: 46vw;
+  z-index: 2; opacity: 0; pointer-events: none;
+  background-size: cover; background-position: center;
+  filter: grayscale(0.12) contrast(1.04) brightness(0.9);
+  transition: opacity 1.1s ease;
+  will-change: opacity, transform;
+}
+.drought-photo.show { opacity: 1; animation: droughtKenburns 7s ease-out forwards; }
+@keyframes droughtKenburns {
+  from { transform: scale(1.0); }
+  to   { transform: scale(1.09); }
+}
+.drought-photo.side-right {
+  right: 0; left: auto;
+  -webkit-mask-image: linear-gradient(to left, #000 34%, transparent 92%);
+          mask-image: linear-gradient(to left, #000 34%, transparent 92%);
+}
+.drought-photo.side-left {
+  left: 0; right: auto;
+  -webkit-mask-image: linear-gradient(to right, #000 34%, transparent 92%);
+          mask-image: linear-gradient(to right, #000 34%, transparent 92%);
+}
+@media (max-width: 900px) {
+  .drought-photo { width: 100%; filter: grayscale(0.2) contrast(1.04) brightness(0.55); }
+  .drought-photo.side-right {
+    -webkit-mask-image: linear-gradient(to left, #000 8%, transparent 82%);
+            mask-image: linear-gradient(to left, #000 8%, transparent 82%);
+  }
+  .drought-photo.side-left {
+    -webkit-mask-image: linear-gradient(to right, #000 8%, transparent 82%);
+            mask-image: linear-gradient(to right, #000 8%, transparent 82%);
+  }
+}
+.drought-inner { position: relative; z-index: 2; text-align: center; padding: 0 24px; }
+.drought-eyebrow {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 5px;
+  color: var(--grey); margin-bottom: 18px; text-transform: uppercase;
+}
+.drought-year {
+  font-family: var(--font-display);
+  font-size: clamp(86px, 18vw, 220px); line-height: 0.82; letter-spacing: 2px;
+  color: var(--white); text-shadow: 0 0 60px rgba(0,0,0,0.6);
+}
+.drought-team {
+  font-family: var(--font-mono); font-size: clamp(12px, 1.6vw, 15px);
+  letter-spacing: 4px; margin-top: 14px; color: var(--gold);
+  transition: color 0.5s ease;
+}
+.drought-phrase {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3.2vw, 40px); letter-spacing: 1px;
+  color: var(--white); margin-top: 22px; min-height: 1.2em; opacity: 0;
+  max-width: 900px;
+}
+.drought-phrase.flash { animation: droughtFlash 0.9s ease forwards; }
+@keyframes droughtFlash {
+  0%   { opacity: 0; transform: translateY(10px); }
+  18%  { opacity: 1; transform: translateY(0); }
+  85%  { opacity: 1; }
+  100% { opacity: 0.85; }
+}
+.drought-phrase.memoriam { color: var(--gold); font-style: italic; }
+
+.drought-strip {
+  position: absolute; bottom: 92px; left: 50%; transform: translateX(-50%);
+  z-index: 2; display: flex; gap: 4px; width: min(700px, 82vw);
+}
+.strip-cell {
+  flex: 1; height: 14px; border-radius: 2px;
+  opacity: 0.1; transform: scaleY(0.45); transform-origin: bottom;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.strip-cell.filled { opacity: 1; transform: scaleY(1); }
+.drought-legend {
+  position: absolute; bottom: 52px; left: 50%; transform: translateX(-50%);
+  z-index: 2; display: flex; gap: 18px; flex-wrap: wrap; justify-content: center;
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; color: var(--grey);
+}
+.drought-legend i {
+  display: inline-block; width: 10px; height: 10px; border-radius: 2px;
+  margin-right: 5px; vertical-align: middle;
+}
+
+.drought-blackout {
+  position: absolute; inset: 0; z-index: 5; background: #000;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 36px; padding: 0 24px; text-align: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.6s ease;
+}
+.drought-blackout.show { opacity: 1; }
+.blackout-count {
+  display: flex; gap: 40px; flex-wrap: wrap; justify-content: center;
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 2px; color: var(--grey);
+  text-transform: uppercase;
+}
+.blackout-count b {
+  display: block; font-family: var(--font-display); font-size: 48px;
+  color: var(--white); letter-spacing: 1px; margin-bottom: 4px;
+}
+.blackout-count .zero b { color: var(--red); }
+.blackout-note {
+  font-family: var(--font-body); font-size: 17px; font-weight: 300;
+  color: var(--grey-light); max-width: 540px; line-height: 1.7;
+}
+.blackout-line {
+  font-family: var(--font-display); font-size: clamp(44px, 8vw, 112px);
+  color: var(--red); letter-spacing: 2px; text-shadow: 0 0 40px rgba(204,0,0,0.4);
+}
+
+/* ══════════════════ ACTO 2 · LOS FANTASMAS ANTES DE LA GLORIA ══════════════════ */
+.ghosts-track { position: relative; height: 540vh; background: #000; }
+.ghosts-stage {
+  position: sticky; top: 0; height: 100vh; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.ghosts-video {
+  position: absolute; 
+  inset: 0; 
+  width: 100%; 
+  height: 100%;
+  object-fit: cover; 
+  z-index: 0;
+  filter: grayscale(0.6) contrast(1.05) brightness(0.5);
+  
+  /* ◄ AGREGÁ ESTO SOLO SI EL TIP DE ARRIBA NO BASTÓ: */
+  transform: scale(1.34); /* Hace un leve zoom para recortar los bordes negros */
+}
+.ghosts-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.92)),
+    radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.7) 100%);
+}
+.ghosts-eyebrow {
+  position: absolute; top: 100px; left: 50%; transform: translateX(-50%);
+  z-index: 3; font-family: var(--font-mono); font-size: 11px; letter-spacing: 5px;
+  color: var(--gold); text-transform: uppercase; text-align: center; white-space: nowrap;
+}
+.ghosts-lines { position: absolute; inset: 0; z-index: 2; }
+.ghost-line {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -42%); width: 90%; max-width: 1000px; text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(40px, 7vw, 104px); line-height: 1.02; letter-spacing: 1px;
+  color: var(--white); text-shadow: 0 4px 40px rgba(0,0,0,0.85);
+  opacity: 0; transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.ghost-line.active { opacity: 1; transform: translate(-50%, -50%); }
+.ghost-final span { color: var(--red); display: inline-block; margin-top: 6px; }
+
+/* ══════════════════ ACTO 3 · CHAPTER 1: 2000 ══════════════════ */
+.video-2000 {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(100%);
+  border-radius: 6px;
+}
+
+@media (max-width: 900px) {
+  .drought-track { height: 500vh; }
+  .ghosts-track { height: 440vh; }
+  .drought-strip { bottom: 78px; }
+  .drought-legend { bottom: 44px; gap: 12px; }
+  .blackout-count { gap: 22px; }
+  .blackout-count b { font-size: 36px; }
+  .ghosts-eyebrow { white-space: normal; width: 80%; }
+}
+
+/* ══════════════════ ACTO 4 · CHAPTER 2: 2001 ══════════════════ */
+.f2001 {
+  width: 100%;
+  height: 100%;
+}
+
+
+/* ─── FIX FLOURISH: que los gráficos ocupen todo el espacio ─── */
+.viz-card.chart-full-height {
+  min-height: 430px;
+  display: flex;
+  flex-direction: column;
+}
+
+.viz-card.chart-full-height .flourish-embed {
+  width: 100% !important;
+  flex: 1;
+  min-height: 360px;
+}
+
+.viz-card.chart-full-height .flourish-embed iframe {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 360px !important;
+  display: block;
+}
+
+/* Último gráfico radar */
+.final-radar-wrap {
+  width: 100%;
+  min-height: 520px;
+  margin-top: 24px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(201,168,76,0.02);
+}
+
+.final-radar-wrap .flourish-embed {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 520px;
+}
+
+.final-radar-wrap .flourish-embed iframe {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 520px !important;
+  display: block;
+}
+
+/* ─── FIX ESPECÍFICO: gráfico de victorias (evita que se corte el eje X) ─── */
+.viz-card.chart-victorias {
+  min-height: 590px !important;
+  padding: 28px 28px 64px !important;
+  overflow: visible !important;
+}
+
+.viz-card.chart-victorias .flourish-embed {
+  width: 100% !important;
+  height: 500px !important;
+  min-height: 500px !important;
+  flex: none !important;
+  overflow: visible !important;
+}
+
+.viz-card.chart-victorias .flourish-embed iframe {
+  width: 100% !important;
+  height: 500px !important;
+  min-height: 500px !important;
+  display: block !important;
+}
+
+@media (max-width: 900px) {
+  .viz-card.chart-victorias {
+    min-height: 520px !important;
+    padding-bottom: 56px !important;
+  }
+
+  .viz-card.chart-victorias .flourish-embed,
+  .viz-card.chart-victorias .flourish-embed iframe {
+    height: 440px !important;
+    min-height: 440px !important;
+  }
+}
+
+/* ══════════════════ MAPA ANIMADO SCHUMACHER ══════════════════ */
+.schumi-map-card {
+  padding: 0;
+  overflow: visible;
+  background:
+    radial-gradient(ellipse at 78% 28%, rgba(204,0,0,0.12), transparent 46%),
+    linear-gradient(180deg, rgba(28,28,28,0.98), rgba(10,10,10,0.99));
+  border-color: rgba(201,168,76,0.16);
+}
+
+.schumi-map-scroll {
+  position: relative;
+  height: 440vh;
+}
+
+.schumi-map-stage {
+  position: sticky;
+  top: 0;
+  min-height: 660px;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(280px, 350px) minmax(0, 1fr);
+  align-items: stretch;
+  gap: 24px;
+  padding: 34px;
+  overflow: hidden;
+}
+
+.schumi-map-info {
+  align-self: center;
+  position: relative;
+  z-index: 4;
+  border-radius: 6px;
+  border: 1px solid rgba(201,168,76,0.18);
+  border-left: 3px solid var(--red);
+  background: rgba(10,10,10,0.82);
+  box-shadow: 0 22px 70px rgba(0,0,0,0.45);
+  backdrop-filter: blur(12px);
+  padding: 24px;
+}
+
+.schumi-map-kicker {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--red-bright);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.schumi-map-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4.6vw, 62px);
+  line-height: 0.92;
+  color: var(--white);
+  margin-bottom: 14px;
+}
+
+.schumi-map-title span { color: var(--gold); }
+
+.schumi-map-gp {
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 1;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.schumi-map-circuit {
+  min-height: 28px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1.45;
+  letter-spacing: 1.4px;
+  color: var(--grey-light);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.schumi-map-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.schumi-map-stat {
+  min-width: 0;
+  background: rgba(255,255,255,0.035);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 4px;
+  padding: 12px;
+}
+
+.schumi-map-stat b {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 34px;
+  line-height: 1;
+  color: var(--gold);
+}
+
+.schumi-map-stat small {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 1.2px;
+  color: var(--grey);
+  text-transform: uppercase;
+}
+
+.schumi-map-years {
+  min-height: 66px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--grey-light);
+  font-weight: 300;
+}
+
+.schumi-map-years strong {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.schumi-map-progress {
+  height: 3px;
+  margin-top: 22px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: rgba(255,255,255,0.08);
+}
+
+.schumi-map-progress span {
+  display: block;
+  width: 0%;
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--red), var(--gold));
+}
+
+.schumi-map-wrap {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.07);
+  background:
+    radial-gradient(ellipse at 52% 45%, rgba(255,255,255,0.09), transparent 50%),
+    linear-gradient(180deg, #171717, #0f0f0f 72%, #0a0a0a);
+}
+
+.schumi-map-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(10,10,10,0.62), transparent 18%, transparent 78%, rgba(10,10,10,0.6)),
+    radial-gradient(ellipse at center, transparent 42%, rgba(0,0,0,0.44));
+}
+
+.schumi-map-svg {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 560px;
+  display: block;
+}
+
+.schumi-map-camera {
+  transform-origin: 0 0;
+  transform-box: fill-box;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.schumi-map-graticule line {
+  stroke: rgba(242,242,242,0.065);
+  stroke-width: 0.8;
+}
+
+.schumi-map-land {
+  fill: #686868;
+  opacity: 0.58;
+  stroke: rgba(242,242,242,0.1);
+  stroke-width: 0.65;
+}
+
+.schumi-map-land.is-secondary {
+  opacity: 0.4;
+}
+
+.schumi-map-trail {
+  fill: none;
+  stroke: rgba(255,24,1,0.55);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 6px rgba(255,24,1,0.35));
+}
+
+.schumi-win-dot,
+.schumi-win-halo {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.schumi-win-dot {
+  opacity: 0;
+  fill: var(--red);
+  stroke: rgba(242,242,242,0.9);
+  stroke-width: 1.3;
+  filter: drop-shadow(0 0 7px rgba(255,24,1,0.75));
+  transition: opacity 0.35s ease, fill 0.35s ease, r 0.35s ease;
+}
+
+.schumi-win-dot.visible { opacity: 1; }
+.schumi-win-dot.active { fill: var(--red-bright); }
+
+.schumi-win-halo {
+  opacity: 0;
+  fill: none;
+  stroke: var(--red-bright);
+  stroke-width: 1.4;
+}
+
+.schumi-win-halo.active {
+  opacity: 1;
+  animation: schumiMapPulse 1.4s ease-out infinite;
+}
+
+@keyframes schumiMapPulse {
+  0% { r: 5; opacity: 0.95; }
+  100% { r: 34; opacity: 0; }
+}
+
+.schumi-map-label {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.schumi-map-label.visible { opacity: 1; }
+
+.schumi-map-label rect {
+  fill: rgba(10,10,10,0.78);
+  stroke: rgba(201,168,76,0.24);
+  stroke-width: 0.8;
+  rx: 3;
+}
+
+.schumi-map-label text {
+  fill: var(--white);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.5px;
+}
+
+.schumi-map-counter,
+.schumi-map-caption,
+.schumi-map-legend {
+  position: absolute;
+  z-index: 3;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+}
+
+.schumi-map-counter {
+  top: 16px;
+  right: 18px;
+  padding: 8px 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(10,10,10,0.58);
+  color: var(--grey-light);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.schumi-map-counter b { color: var(--gold); }
+
+.schumi-map-caption {
+  right: 18px;
+  bottom: 14px;
+  color: rgba(186,186,186,0.68);
+  font-size: 9px;
+  letter-spacing: 1.3px;
+}
+
+.schumi-map-legend {
+  left: 18px;
+  bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(186,186,186,0.72);
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.schumi-map-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.schumi-map-legend i {
+  display: block;
+  border-radius: 999px;
+  background: var(--red);
+  border: 1px solid rgba(242,242,242,0.82);
+  box-shadow: 0 0 9px rgba(255,24,1,0.58);
+}
+
+.schumi-map-legend .small-dot { width: 7px; height: 7px; }
+.schumi-map-legend .big-dot { width: 13px; height: 13px; }
+
+@media (max-width: 900px) {
+  .schumi-map-scroll { height: 390vh; }
+  .schumi-map-stage {
+    grid-template-columns: 1fr;
+    min-height: 100vh;
+    padding: 22px;
+  }
+  .schumi-map-info {
+    order: 2;
+    align-self: end;
+    padding: 18px;
+  }
+  .schumi-map-wrap { min-height: 56vh; }
+  .schumi-map-svg { min-height: 56vh; }
+  .schumi-map-title { font-size: 38px; }
+  .schumi-map-gp { font-size: 23px; }
+  .schumi-map-years { min-height: auto; }
+  .schumi-map-legend {
+    left: 14px;
+    right: 14px;
+    bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .schumi-map-caption { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .schumi-map-camera,
+  .schumi-win-dot,
+  .schumi-map-label {
+    transition: none;
+  }
+  .schumi-win-halo.active {
+    animation: none;
+  }
+}
+
+/* Ajuste final del mapa: base detallada, puntos iguales y texto editorial */
+.schumi-map-card {
+  background: #050505;
+  border-color: rgba(201,168,76,0.14);
+}
+
+.schumi-map-stage {
+  grid-template-columns: minmax(270px, 330px) minmax(0, 1fr);
+  gap: 28px;
+}
+
+.schumi-map-info {
+  background: linear-gradient(180deg, rgba(10,10,10,0.9), rgba(10,10,10,0.72));
+  border: 0;
+  border-left: 3px solid var(--red);
+  box-shadow: none;
+  backdrop-filter: blur(8px);
+}
+
+.schumi-map-title {
+  margin-bottom: 22px;
+}
+
+.schumi-map-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.schumi-map-info.is-intro .schumi-map-copy {
+  display: none;
+}
+
+.schumi-map-info.is-final .schumi-map-line.is-race-only {
+  display: none;
+}
+
+.schumi-map-line {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.schumi-map-line:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.schumi-map-line span {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--red-bright);
+  text-transform: uppercase;
+}
+
+.schumi-map-line strong {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.7vw, 34px);
+  line-height: 0.98;
+  color: var(--white);
+  font-weight: 400;
+}
+
+.schumi-map-line em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+.schumi-map-years {
+  min-height: 0;
+}
+
+.schumi-map-progress {
+  margin-top: 26px;
+}
+
+.schumi-map-wrap {
+  background: #000;
+  border-color: rgba(255,255,255,0.09);
+}
+
+.schumi-map-wrap::after {
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.52), transparent 14%, transparent 82%, rgba(0,0,0,0.5)),
+    radial-gradient(ellipse at center, transparent 52%, rgba(0,0,0,0.34));
+}
+
+.schumi-map-svg {
+  min-height: 560px;
+}
+
+.schumi-map-image {
+  opacity: 0.92;
+  filter: contrast(1.08) brightness(0.9);
+}
+
+.schumi-win-dot {
+  fill: var(--red-bright);
+  stroke: var(--white);
+  stroke-width: 2.2;
+  filter: drop-shadow(0 0 9px rgba(255,24,1,0.9));
+}
+
+.schumi-win-dot.active {
+  fill: var(--red-bright);
+}
+
+.schumi-map-caption {
+  color: rgba(242,242,242,0.72);
+}
+
+@media (max-width: 900px) {
+  #visualizations { padding: 0 24px 70px; }
+  .viz-transition::before { inset: 0 -24px; }
+  .viz-transition-title { font-size: clamp(52px, 17vw, 82px); }
+  .schumi-map-stage {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 20px;
+  }
+  .schumi-map-info {
+    order: 2;
+    padding: 18px;
+  }
+  .schumi-map-wrap { min-height: 48vh; }
+  .schumi-map-svg { min-height: 48vh; }
+  .schumi-map-line strong { font-size: 24px; }
+}
+
+/* ─── DOMINIO EN PERSPECTIVA · SCROLLYTELLING ─── */
+#visualizations {
+  padding: 0;
+  overflow: visible;
+  isolation: isolate;
+  background: var(--black-mid);
+}
+
+#visualizations .dominio-scroll {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 50% 18%, rgba(204,0,0,0.1), transparent 36%),
+    var(--black-mid);
+}
+
+#visualizations .dominio-sr-title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+#visualizations .dominio-header-lock {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  height: 154px;
+  margin-bottom: -154px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+#visualizations .dominio-header-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  background: linear-gradient(180deg, rgba(5,5,5,0.98) 0%, rgba(5,5,5,0.88) 58%, rgba(5,5,5,0));
+  will-change: opacity;
+}
+
+#visualizations .dominio-title {
+  position: absolute;
+  left: 50%;
+  z-index: 1;
+  margin: 0;
+  color: var(--white);
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.015em;
+  line-height: 0.88;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 8px 28px rgba(0,0,0,0.56);
+  will-change: transform, opacity;
+}
+
+#visualizations .dominio-title-multiline {
+  top: 50vh;
+  width: min(92vw, 1000px);
+  font-size: clamp(64px, 10.6vw, 132px);
+  opacity: 0;
+  transform: translate3d(-50%, -50%, 0) translateY(24px) scale(0.97);
+}
+
+#visualizations .dominio-title-multiline > span {
+  display: block;
+}
+
+#visualizations .dominio-title-accent {
+  color: var(--gold);
+}
+
+#visualizations .dominio-kicker {
+  margin-bottom: 18px;
+  color: var(--red-bright);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 4px;
+  line-height: 1;
+}
+
+#visualizations .dominio-title-single {
+  top: clamp(96px, 12vh, 116px);
+  width: calc(100% - 48px);
+  color: var(--white);
+  font-size: clamp(34px, 3.8vw, 56px);
+  line-height: 1;
+  opacity: 0;
+  transform: translate3d(-50%, -50%, 0) translateY(12px) scale(0.985);
+  white-space: nowrap;
+}
+
+#visualizations .dominio-intro-scroll {
+  position: relative;
+  z-index: 3;
+  height: 760vh;
+}
+
+#visualizations .dominio-intro-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  min-height: 620px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(201,168,76,0.055), transparent 48%),
+    linear-gradient(180deg, rgba(18,18,18,0.99), rgba(8,8,8,0.995));
+}
+
+#visualizations .dominio-chart-panel {
+  position: absolute;
+  top: clamp(140px, 18vh, 164px);
+  bottom: clamp(22px, 4vh, 38px);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+#visualizations .dominio-chart-left {
+  left: clamp(24px, 5vw, 80px);
+  right: calc(50% + 14px);
+}
+
+#visualizations .dominio-chart-right {
+  right: clamp(24px, 5vw, 80px);
+  left: calc(50% + 14px);
+}
+
+#visualizations .dominio-chart-frame {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: clamp(12px, 1.4vw, 20px);
+  overflow: hidden;
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0) 42%),
+    rgba(10,10,10,0.98);
+  box-shadow: 0 26px 70px rgba(0,0,0,0.44);
+}
+
+#visualizations .dominio-chart-panel .flourish-embed,
+#visualizations .dominio-chart-panel .flourish-embed iframe {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-width: 100%;
+  border: 0;
+}
+
+#visualizations .dominio-chart-panel .flourish-embed {
+  overflow: hidden !important;
+}
+
+#visualizations .dominio-map-phase {
+  position: relative;
+  z-index: 6;
+  margin-top: -80vh;
+}
+
+#visualizations .dominio-map-card {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  border-right: 0;
+  border-left: 0;
+  border-radius: 0;
+  background: #050505;
+}
+
+#visualizations .dominio-map-phase .schumi-map-scroll {
+  height: 440vh;
+}
+
+#visualizations .dominio-map-phase .schumi-map-stage {
+  box-sizing: border-box;
+  min-height: 0;
+  height: 100vh;
+  height: 100svh;
+  padding: clamp(146px, 18vh, 166px) clamp(24px, 4vw, 64px) clamp(22px, 3vh, 32px);
+  gap: clamp(18px, 2vw, 28px);
+  background:
+    radial-gradient(ellipse at 78% 28%, rgba(204,0,0,0.1), transparent 42%),
+    #050505;
+}
+
+#visualizations .dominio-map-phase .schumi-map-info {
+  min-width: 0;
+}
+
+#visualizations .dominio-map-phase .schumi-map-wrap {
+  min-height: 0;
+  border-radius: 7px;
+}
+
+#visualizations .dominio-map-phase .schumi-map-svg {
+  min-height: 0;
+}
+
+@media (max-width: 900px) {
+  #visualizations {
+    padding: 0;
+  }
+
+  #visualizations .dominio-header-lock {
+    position: relative;
+    top: auto;
+    height: 96px;
+    margin-bottom: 0;
+  }
+
+  #visualizations .dominio-header-scrim {
+    opacity: 1;
+  }
+
+  #visualizations .dominio-title-multiline {
+    display: none;
+  }
+
+  #visualizations .dominio-title-single {
+    top: 66px;
+    width: calc(100% - 24px);
+    font-size: clamp(25px, 7vw, 36px);
+    opacity: 1;
+    transform: translate3d(-50%, -50%, 0);
+  }
+
+  #visualizations .dominio-intro-scroll {
+    height: auto;
+  }
+
+  #visualizations .dominio-intro-stage {
+    position: relative;
+    top: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    height: auto;
+    min-height: 0;
+    padding: 16px 16px 26px;
+    overflow: visible;
+  }
+
+  #visualizations .dominio-chart-panel {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    width: 100%;
+    height: clamp(420px, 72svh, 560px);
+    min-height: 420px;
+    opacity: 1 !important;
+    transform: none !important;
+    will-change: auto;
+  }
+
+  #visualizations .dominio-chart-frame {
+    padding: 10px;
+  }
+
+  #visualizations .dominio-map-phase {
+    margin-top: 0;
+  }
+
+  #visualizations .dominio-map-phase .schumi-map-scroll {
+    height: 390vh;
+  }
+
+  #visualizations .dominio-map-phase .schumi-map-stage {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(260px, 1fr) auto;
+    gap: 14px;
+    padding: 72px 16px 18px;
+  }
+
+  #visualizations .dominio-map-phase .schumi-map-wrap,
+  #visualizations .dominio-map-phase .schumi-map-svg {
+    min-height: 0;
+  }
+
+  #visualizations .dominio-map-phase .schumi-map-info {
+    padding: 16px;
+  }
+
+  #visualizations .dominio-map-phase .schumi-map-title {
+    margin-bottom: 14px;
+    font-size: clamp(30px, 9vw, 40px);
+  }
+
+  #visualizations .dominio-map-phase .schumi-map-line {
+    padding-bottom: 9px;
+  }
+
+  #visualizations .dominio-map-phase .schumi-map-progress {
+    margin-top: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #visualizations .dominio-header-lock {
+    height: 132px;
+    margin-bottom: 0;
+  }
+
+  #visualizations .dominio-header-scrim {
+    opacity: 1 !important;
+    will-change: auto;
+  }
+
+  #visualizations .dominio-title-multiline {
+    display: none;
+  }
+
+  #visualizations .dominio-title-single {
+    top: 108px;
+    opacity: 1 !important;
+    transform: translate3d(-50%, -50%, 0) !important;
+    will-change: auto;
+  }
+
+  #visualizations .dominio-intro-scroll {
+    height: auto;
+  }
+
+  #visualizations .dominio-intro-stage {
+    position: relative;
+    top: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    height: auto;
+    min-height: 0;
+    padding: 20px clamp(24px, 5vw, 80px) 32px;
+    overflow: visible;
+  }
+
+  #visualizations .dominio-chart-panel {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    width: 100%;
+    min-height: 500px;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    will-change: auto;
+  }
+
+  #visualizations .dominio-map-phase {
+    margin-top: 0;
+  }
+
+  #visualizations .dominio-title,
+  #visualizations .dominio-chart-panel {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 900px) and (prefers-reduced-motion: reduce) {
+  #visualizations .dominio-header-lock {
+    height: 96px;
+  }
+
+  #visualizations .dominio-title-single {
+    top: 66px;
+  }
+
+  #visualizations .dominio-intro-stage {
+    grid-template-columns: 1fr;
+    padding: 16px 16px 26px;
+  }
+
+  #visualizations .dominio-chart-panel {
+    min-height: 420px;
+    height: clamp(420px, 72svh, 560px);
+  }
+}
+
+@media (min-width: 901px) and (max-height: 760px) {
+  #visualizations .dominio-map-phase .schumi-map-stage {
+    padding: 140px clamp(24px, 4vw, 64px) 12px;
+    gap: 20px;
+  }
+
+  #visualizations .dominio-map-phase .schumi-map-info {
+    padding: 16px 18px;
+  }
+
+  #visualizations .dominio-map-phase .schumi-map-title {
+    margin-bottom: 12px;
+    font-size: 44px;
+  }
+
+  #visualizations .dominio-map-phase .schumi-map-line {
+    gap: 2px;
+    padding-bottom: 8px;
+  }
+
+  #visualizations .dominio-map-phase .schumi-map-line strong {
+    font-size: 28px;
+  }
+
+  #visualizations .dominio-map-phase .schumi-map-progress {
+    margin-top: 14px;
+  }
+}
+
+/* ─── GOAT · INTRO SCROLL ─── */
+#goat {
+  padding: 0;
+  overflow: visible;
+  isolation: isolate;
+}
+
+#goat .goat-bg {
+  z-index: 0;
+  pointer-events: none;
+}
+
+#goat .goat-intro-scroll {
+  position: relative;
+  z-index: 1;
+  height: 220vh;
+  height: 220svh;
+}
+
+#goat .goat-intro-stage {
+  position: sticky;
+  top: 0;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  height: 100svh;
+  min-height: 620px;
+  overflow: hidden;
+  background: var(--black);
+}
+
+#goat .goat-intro-header {
+  position: relative;
+  z-index: 1;
+  width: min(92vw, 1100px);
+  margin: 0;
+  text-align: center;
+  opacity: 1;
+  transform: none;
+  will-change: transform, opacity;
+}
+
+html.goat-scroll-ready #goat .goat-intro-header {
+  opacity: 0;
+  transform: translate3d(0, 32px, 0) scale(0.97);
+}
+
+#goat .goat-content {
+  position: relative;
+  z-index: 1;
+  padding: 0 clamp(24px, 5vw, 80px) 120px;
+}
+
+@media (max-width: 900px) {
+  #goat .goat-intro-scroll {
+    height: auto;
+  }
+
+  #goat .goat-intro-stage {
+    position: relative;
+    height: auto;
+    min-height: 55svh;
+    padding: 112px 24px 60px;
+  }
+
+  #goat .goat-intro-header,
+  html.goat-scroll-ready #goat .goat-intro-header {
+    opacity: 1 !important;
+    transform: none !important;
+    will-change: auto;
+  }
+
+  #goat .goat-content {
+    padding: 0 24px 80px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #goat .goat-intro-scroll {
+    height: auto;
+  }
+
+  #goat .goat-intro-stage {
+    position: relative;
+    height: auto;
+    min-height: 0;
+    padding: 128px clamp(24px, 5vw, 80px) 64px;
+  }
+
+  #goat .goat-intro-header,
+  html.goat-scroll-ready #goat .goat-intro-header {
+    opacity: 1 !important;
+    transform: none !important;
+    will-change: auto;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ─── PROGRESS CAR ─── -->
+<div id="progress-car">
+  <div id="progress-track">
+    <div id="progress-fill"></div>
+    <div id="car-icon">🏎</div>
+  </div>
+</div>
+
+<!-- ─── TOP NAV ─── -->
+<nav id="topnav">
+  <div class="logo"><span>FERRARI</span> × SCHUMACHER</div>
+  <div class="year-nav">
+    <a href="#hero">INICIO</a>
+    <a href="#intro">CONTEXTO</a>
+    <a href="#year-2000">2000</a>
+    <a href="#year-2001">2001</a>
+    <a href="#year-2002">2002</a>
+    <a href="#year-2003">2003</a>
+    <a href="#year-2004">2004</a>
+    <a href="#goat">EL LEGADO</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- HERO                                                    -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="hero">
+  <!-- VIDEO DE FONDO DEL HERO (ver instrucciones: poné tu archivo en assets/hero.mp4) -->
+  <video class="hero-video" autoplay muted loop playsinline poster="assets/hero-poster.jpg">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-bg"></div>
+  <div class="hero-stripe"></div>
+  
+  <!-- Speed lines -->
+  <div class="speed-lines" id="speedLines"></div>
+
+  <div class="hero-content">
+    <h1 class="hero-title">
+      <div style="padding-left: 87px;">LOS AÑOS<br></div>
+      <span class="gold">DORADOS</span>
+    </h1>
+
+    <div class="hero-subtitle">Michael Schumacher: El Kaiser de <span class="red">Ferrari</span></div>
+
+    <p class="hero-desc">
+      Entre 2000 y 2004, Michael Schumacher y Ferrari construyeron una de las dinastías más impresionantes de la historia del deporte.
+    </p>
+
+    <div class="hero-metrics">
+      <div class="metric">
+        <span class="number">5</span>
+        <span class="label">Campeonatos<br>consecutivos</span>
+      </div>
+      <div class="metric">
+        <span class="number red">48</span>
+        <span class="label">Victorias<br>en el período</span>
+      </div>
+      <div class="metric metric-logo">
+        <span class="ferrari-emblem">
+          <img src="assets/ferrari-logo.png" alt="Escudo Ferrari" onerror="this.parentElement.classList.add('is-fallback')">
+        </span>
+        <span class="label">Dominio<br>absoluto Ferrari</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-red"></div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- INTRO / CONTEXTO                                        -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="intro">
+
+  <!-- ════════════════ ACTO 1 · EL PESO DE LA SEQUÍA ════════════════ -->
+  <div class="drought" id="drought">
+    <div class="drought-track">
+      <div class="drought-stage">
+        <div class="drought-bg" id="droughtBg"></div>
+        <div class="drought-photo" id="droughtPhotoA"></div>
+        <div class="drought-photo" id="droughtPhotoB"></div>
+        <div class="drought-vignette"></div>
+
+        <div class="drought-inner">
+          <div class="drought-eyebrow">El contexto · 21 años de sequía</div>
+          <div class="drought-year" id="droughtYear">1979</div>
+          <div class="drought-team" id="droughtTeam">FERRARI — CAMPEÓN</div>
+          <div class="drought-phrase" id="droughtPhrase"></div>
+        </div>
+
+        <!-- Tira de datos: un año por celda, color = escudería campeona de pilotos -->
+        <div class="drought-strip" id="droughtStrip" aria-hidden="true"></div>
+        <div class="drought-legend">
+          <span><i style="background:#ff1801"></i> Ferrari</span>
+          <span><i style="background:#1746c4"></i> Williams</span>
+          <span><i style="background:#dcdcdc"></i> McLaren</span>
+          <span><i style="background:#1f9e6b"></i> Benetton</span>
+          <span><i style="background:#5b6b86"></i> Brabham</span>
+        </div>
+
+        <!-- Pantalla negra final -->
+        <div class="drought-blackout" id="droughtBlackout">
+          <div class="blackout-count">
+            <span><b>9</b>McLaren</span>
+            <span><b>7</b>Williams</span>
+            <span><b>4</b>otros</span>
+            <span class="zero"><b>0</b>Ferrari</span>
+          </div>
+          <div class="blackout-note">20 años. Cuatro escuderías repartiéndose la gloria. Ningún título para Maranello.</div>
+          <div class="blackout-line">Hasta que llegó él</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════ ACTO 2 · LOS FANTASMAS ANTES DE LA GLORIA ════════════════ -->
+  <div class="ghosts" id="ghosts">
+    <div class="ghosts-track">
+      <div class="ghosts-stage">
+        <!-- Video de fondo (poné tu archivo en assets/fantasmas.mp4) -->
+        <video class="ghosts-video" autoplay muted loop playsinline poster="assets/fantasmas-poster.jpg">
+          <source src="assets/fantasmas.mp4" type="video/mp4">
+        </video>
+        <div class="ghosts-overlay"></div>
+        <div class="ghosts-eyebrow">1996 — 1999</div>
+
+        <div class="ghosts-lines" id="ghostsLines">
+          <p class="ghost-line" data-step="0">La presión de toda Italia</p>
+          <p class="ghost-line" data-step="1">Un auto que no estaba a la altura</p>
+          <p class="ghost-line" data-step="2">Accidentes, polémicas y fracturas</p>
+          <p class="ghost-line ghost-final" data-step="3">Y de repente,<br><span>el año 2000</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div class="divider-grey"></div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- CHAPTERS                                               -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="chapters">
+
+  <!-- ─── 2000 ─── -->
+  <article class="chapter" id="year-2000">
+    <div class="chapter-sticky">
+      <img class="sch-corner-photo" src="assets/sch-2000.png">
+      
+      <div class="starting-lights">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+      </div>
+
+      <div class="chapter-badge">● CAPÍTULO I</div>
+      <div class="chapter-year">2000</div>
+    </div>
+
+    <div class="chapter-content">
+      <div class="empty"></div>
+      <div class="chapter-tagline">El primer retorno</div>
+      <p class="chapter-desc">
+        Ferrari volvía a coronar a un piloto después de 21 años de sequía. 
+        Schumacher fue implacable en la segunda mitad de la temporada 
+        frente a un Häkkinen en la cima de sus poderes.
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-pill">
+          <div class="s-val">9</div>
+          <div class="s-key">Victorias</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">108</div>
+          <div class="s-key">Puntos</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">9</div>
+          <div class="s-key">Poles</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val red">12</div>
+          <div class="s-key">Podios</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">2</div>
+          <div class="s-key">Abandonos</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">1°</div>
+          <div class="s-key">Constructores</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px">
+        <div class="race-pills" id="pills-2000">
+          <!-- Se generan con JS -->
+        </div>
+      </div>
+
+      <div class="empty"></div>
+
+      <div class="content-card">
+        <div class="card-label">EL MOMENTO</div>
+        <div class="card-title">Suzuka, la revancha</div>
+        <p class="card-text" style="padding-bottom: 20px;">
+          El Gran Premio de Japón fue el escenario de la consagración. 
+          Schumacher cruzó la línea de meta y los mecánicos Ferrari 
+          invadieron la pista. El último campeonato de pilotos Ferrari 
+          había sido de Jody Scheckter en 1979.
+        </p>
+        <!-- ESPACIO PARA VIDEO DEL GP DE JAPÓN 2000 -->
+        <div class="video-container" id="videoContainer">
+          <!-- Added autoplay and muted attributes here -->
+          <video id="customVideo" poster="assets/suzuka-2000-poster.jpg" playsinline autoplay muted loop>
+            <source src="assets/2000.mp4" type="video/mp4">
+          </video>
+        
+          <!-- Progress Bar (Timeline) -->
+          <div class="timeline-container">
+            <input type="range" id="seekBar" min="0" max="100" value="0">
+          </div>
+        
+          <!-- Custom Control Panel -->
+          <div class="video-controls" id="videoControls">
+            <div class="controls-left">
+              <button id="vPlayBtn" aria-label="Play">
+                <svg id="playIcon" viewBox="0 0 24 24" style="display:none;"><path d="M8 5v14l11-7z"/></svg>
+                <svg id="pauseIcon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+              </button>
+            
+              <!-- Contenedor agrupando botón de mute y la barra de volumen -->
+              <div class="volume-container">
+                <button id="muteBtn" aria-label="Mute">
+                  <svg id="volumeUpIcon" viewBox="0 0 24 24" style="display:none;"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                  <svg id="volumeOffIcon" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.21.05-.42.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+                </button>
+
+                <!-- Barra deslizante de volumen (Rango de 0 a 1, empieza en 0 porque el video inicia muteado) -->
+                <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0">
+              </div>
+            </div>
+          
+            <div class="controls-right">
+              <button id="fullscreenBtn" aria-label="Fullscreen">
+                <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="empty"></div>
+
+      <div class="content-card quote-card">
+        <p class="quote-text">
+          "No puedo describir lo que pasó en ese momento. Simplemente no se puede poner algo así en
+          palabras. Era inmensamente feliz. No sabía qué hacer con tanta buena fortuna. De repente
+          sentí que casi estaba atrapado dentro de mi auto, mi Ferrari. Era como si estuvieras a punto 
+          de estallar. ¡Fue una liberación enorme! ¡Un alivio inmenso!"
+        </p>
+        <div class="quote-attr">- MICHAEL SCHUMACHER</div>
+        <!-- NOTA: reemplazar con cita real verificada -->
+      </div>
+
+      <div class="empty"></div>
+
+      <div class="content-card">
+        <div class="card-label">PASO POR PASO</div>
+        <div class="card-title">Al final, reina el Kaiser</div>
+        <p class="card-text">
+          Mika Häkkinen ganó los dos campeonatos anteriores con McLaren-Mercedes. En 2000, el duelo fue al límite: 2 puntos separaron a ambos pilotos en el inicio de temporada, pero Schumacher aceleró en la recta final.
+        </p>
+        <div class="grafico-container">
+          <div class="flourish-embed flourish-chart grafico" data-src="visualisation/29371603"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/29371603/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
+        </div>
+        </div>
+
+      <div class="halfempty"></div>
+
+      <div class="gallery-zone">
+        <!-- Contenedor intermedio que se queda "fijo" en pantalla mientras scrolleas -->
+        <div class="gallery-stage">
+          
+          <!-- El track que contiene las fotos y se desplaza horizontalmente -->
+          <div class="gallery-track">
+            <div class="gallery-item">
+              <img src="https://db926pi9qb9rr.cloudfront.net/imgproxy/2400x,sThCMPxVa3Burtw9eay-MBhKu5R2UOEUMDF5LHeL4xP4=/https://storage-2.hrzg.de/michaelschumacher/public/racing-legend/2000/legend-2000-01.jpg?p1" alt="Foto 1 - 2000">
+            </div>
+            <div class="gallery-item">
+              <img src="https://db926pi9qb9rr.cloudfront.net/imgproxy/2400x,sALDOVkK5RSyd5_u3fkSicd8dzrxtnoj-IHyv4P19wIw=/https://storage-2.hrzg.de/michaelschumacher/public/racing-legend/2000/legend-2000-19.jpg?p1" alt="Foto 2 - 2000">
+            </div>
+            <div class="gallery-item">
+              <img src="https://db926pi9qb9rr.cloudfront.net/imgproxy/2400x,sI_-o1Thj0YaQqAJKWeG-2AYSp5ubiZe7ioSBz2d6P18=/https://storage-2.hrzg.de/michaelschumacher/public/racing-legend/2000/legend-2000-05.jpg?p1" alt="Foto 3 - 2000">
+            </div>
+            <div class="gallery-item">
+              <img src="https://db926pi9qb9rr.cloudfront.net/imgproxy/2400x,svjnUDuxbzRHCOW_JCI1FKzYBhtZSDjFPjP5pVtxBzMQ=/https://storage-2.hrzg.de/michaelschumacher/public/racing-legend/2000/legend-2000-03.jpg?p1" alt="Foto 4 - 2000">
+            </div>
+            <!-- Podés meter la cantidad de fotos que quieras, el JS calcula el largo solo -->
+          </div>
+        
+        </div>
+      </div>
+
+      <div class="halfempty"></div>
+      
+    </div>
+  </article>
+
+  <div class="chapter-separator"></div>
+
+  <!-- ─── 2001 ─── -->
+  <article class="chapter" id="year-2001">
+    <div class="chapter-sticky">
+      <img class="sch-corner-photo" src="assets/sch-2001.png" style="padding-left: 120px; height: 475px">
+
+      <div class="starting-lights">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+      </div>
+
+      <div class="chapter-badge">● CAPÍTULO II</div>
+      <div class="chapter-year">2001</div>
+    </div>
+
+    <div class="chapter-content">
+      
+      <div class="empty"></div>
+
+      <div class="chapter-tagline">La consolidación</div>
+      <p class="chapter-desc">
+        El F2001 fue una máquina diseñada para ganar. Schumacher 
+        dominó con claridad, dejando en claro que 2000 no fue casualidad. 
+        El dominio Ferrari empezaba a dibujarse en el horizonte.
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-pill">
+          <div class="s-val">9</div>
+          <div class="s-key">Victorias</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">123</div>
+          <div class="s-key">Puntos</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">11</div>
+          <div class="s-key">Poles</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val red">14</div>
+          <div class="s-key">Podios</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">3</div>
+          <div class="s-key">Abandonos</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">1°</div>
+          <div class="s-key">Constructores</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px; align-content: center;">
+        <div class="race-pills" id="pills-2001"></div>
+      </div>
+
+      <div class="empty"></div>
+
+      <div class="content-card">
+        <div class="card-label">EL AUTO</div>
+        <div class="card-title">Ferrari F2001: El monoplaza de la consolidación</div>
+        <p class="card-text" style="padding-bottom: 20px;">
+          El F2001 fue desarrollado sobre la base del exitoso F1-2000. 
+          Motor V10 650 CV, mejor aerodinámica y confiabilidad excepcional. 
+          Rubenss Barrichello fue el compañero de Schumacher, 
+          cumpliendo su rol de segundo piloto con profesionalismo.
+        </p>
+        <!-- ESPACIO PARA IMAGEN DEL F2001 -->
+        <div class="media-placeholder">
+          <iframe class="f2001" style="border-radius: 6px;" title="Ferrari F2001 - Tribute to Michael Schumacher" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/1597a6a00d164f5ca8852ad40e96a89b/embed?ui_theme=dark"> </iframe> </div>
+      </div>
+
+      <div class="quadempty"></div>
+
+      <div class="content-card">
+        <div class="card-label">DOMINIO SOBRE EL COMPAÑERO Y LA COMPETENCIA</div>
+        <div class="card-title">Schumacher contra todos</div>
+        <p class="card-text">
+          Schumacher campeona con una amplia diferencia sobre su competencia, 
+          duplicando en puntos a los finalizados en tercer y cuarto puesto en esta temporada. Este 
+          útlimo sería su hermano, Ralf.
+        </p>
+        <div class="grafico-container">
+          <div class="flourish-embed flourish-chart grafico" data-src="visualisation/29666519"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/29666519/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
+        </div>
+      </div>
+
+      <div class="empty"></div>
+
+      <div class="content-card quote-card">
+        <p class="quote-text">
+          "Es la competencia lo que me impulsa. Tengo suficiente fuego en las entrañas como para
+          seguir adelante."
+        </p>
+        <div class="quote-attr">- MICHAEL SCHUMACHER · 2001</div>
+      </div>
+
+      <div class="halfempty"></div>
+
+      <div class="gallery-zone">
+        <!-- Contenedor intermedio que se queda "fijo" en pantalla mientras scrolleas -->
+        <div class="gallery-stage">
+          
+          <!-- El track que contiene las fotos y se desplaza horizontalmente -->
+          <div class="gallery-track">
+            <div class="gallery-item">
+              <img src="https://db926pi9qb9rr.cloudfront.net/imgproxy/2400x,s1EDK2qBQkxwStPI1WU6t3zpq_6FgugKN6ELFtAyufyI=/https://storage-2.hrzg.de/michaelschumacher/public/racing-legend/2001/legend-2001-052.jpg?p1" alt="Foto 1 - 2000">
+            </div>
+            <div class="gallery-item">
+              <img src="https://db926pi9qb9rr.cloudfront.net/imgproxy/2400x,s_ZID_EA7vyi9_4pgyJTYfjnCoqfPohhdzLXP8-26TDk=/https://storage-2.hrzg.de/michaelschumacher/public/racing-legend/2001/legend-2001-049.jpg?p1" alt="Foto 2 - 2000">
+            </div>
+            <div class="gallery-item">
+              <img src="https://db926pi9qb9rr.cloudfront.net/imgproxy/2400x,s5C_c6oubPxU6SSsIVRObaMz5LBgDynpj3BcdZSe4w_U=/https://storage-2.hrzg.de/michaelschumacher/public/racing-legend/2001/legend-2001-035.jpg?p1" alt="Foto 3 - 2000">
+            </div>
+            <div class="gallery-item">
+              <img src="https://db926pi9qb9rr.cloudfront.net/imgproxy/2400x,sy1X5fn9R0yXl22Sg_0ONO4v4CryU7BKS3OHvFS4Ogbg=/https://storage-2.hrzg.de/michaelschumacher/public/racing-legend/2001/legend-2001-083.jpg?p1" alt="Foto 4 - 2000">
+            </div>
+            <!-- Podés meter la cantidad de fotos que quieras, el JS calcula el largo solo -->
+          </div>
+        
+        </div>
+      </div>
+
+      <div class="halfempty"></div>
+
+    </div>
+  </article>
+
+  <div class="chapter-separator"></div>
+
+  <!-- ─── 2002 ─── -->
+  <article class="chapter" id="year-2002">
+    <div class="chapter-sticky">
+      <img class="sch-corner-photo" src="assets/sch-2002.png" style="padding-left: 100px;">
+
+      <div class="starting-lights">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+      </div>
+
+      <div class="chapter-badge">● CAPÍTULO III</div>
+      <div class="chapter-year">2002</div>
+    </div>
+
+    <div class="chapter-content">
+
+      <div class="empty"></div>
+
+      <div class="chapter-tagline">El aplastamiento total</div>
+      <p class="chapter-desc">
+        La temporada más dominante de la historia reciente. 
+        Schumacher terminó en el podio en <em>todas</em> las carreras. 
+        Igualó a Fangio. El mundo no tenía palabras.
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-pill">
+          <div class="s-val">11</div>
+          <div class="s-key">Victorias</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">144</div>
+          <div class="s-key">Puntos</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">7</div>
+          <div class="s-key">Poles</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val red">17</div>
+          <div class="s-key">Podios</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">0</div>
+          <div class="s-key">DNFs</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">1°</div>
+          <div class="s-key">Constructores</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px">
+        <div class="race-pills" id="pills-2002"></div>
+      </div>
+
+      <div class="empty"></div>
+
+      <div class="content-card">
+        <div class="card-label">EL RÉCORD</div>
+        <div class="card-title">En el podio en cada carrera</div>
+        <p class="card-text">
+          Schumacher terminó en los primeros tres puestos en las 17 fechas 
+          del campeonato. Una hazaña sin precedentes en la era moderna. 
+          11 victorias, 5 segundos, 1 tercero: consistencia absoluta.
+        </p>
+        <div class="grafico-container">
+          <div class="flourish-embed flourish-chart grafico" data-src="visualisation/29666557"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/29666557/thumbnail" width="100%" alt="chart visualization" /></noscript></div></div>
+      </div>
+
+      <div class="empty"></div>
+
+      <div class="content-card quote-card">
+        <p class="quote-text">
+          "Y de repente, toda la presión desaparece; te das cuenta de que lo lograste. Es un momento 
+          fantástico, todas tus emociones salen a la superficie... La verdad es que no encuentro las 
+          palabras adecuadas para describirlo."</p>
+        <div class="quote-attr">— MICHAEL SCHUMACHER · 2002</div>
+      </div>
+
+      <div class="halfempty"></div>
+
+      <div class="gallery-zone">
+        <!-- Contenedor intermedio que se queda "fijo" en pantalla mientras scrolleas -->
+        <div class="gallery-stage">
+          
+          <!-- El track que contiene las fotos y se desplaza horizontalmente -->
+          <div class="gallery-track">
+            <div class="gallery-item">
+              <img src="https://db926pi9qb9rr.cloudfront.net/imgproxy/2400x,sc48fSI2XSdquYxv6_Y8zLSTFJt1lbqKP1dWN5SRTvuk=/https://storage-2.hrzg.de/michaelschumacher/public/racing-legend/2002/legend-2002-02.jpg?p1" alt="Foto 1 - 2000">
+            </div>
+            <div class="gallery-item">
+              <img src="https://db926pi9qb9rr.cloudfront.net/imgproxy/2400x,shvWtTjL_mCiSquRI0fpG_dpkaNkHVg1rxb7tMh5Y5D0=/https://storage-2.hrzg.de/michaelschumacher/public/racing-legend/2002/legend-2002-04.jpg?p1" alt="Foto 2 - 2000">
+            </div>
+            <div class="gallery-item">
+              <img src="https://db926pi9qb9rr.cloudfront.net/imgproxy/2400x,sEMhyLVAOPJCIT9_a7ymmjOOgkshBZQg8vLMUzrRVRpA=/https://storage-2.hrzg.de/michaelschumacher/public/racing-legend/2002/legend-2002-18.jpg?p1" alt="Foto 3 - 2000">
+            </div>
+            <div class="gallery-item">
+              <img src="https://db926pi9qb9rr.cloudfront.net/imgproxy/2400x,sRxWQPdKrq0R6hKOFolXU_-eUtFEWnQ-lmX1sSBlVxFI=/https://storage-2.hrzg.de/michaelschumacher/public/racing-legend/2002/legend-2002-45.jpg?p1" alt="Foto 4 - 2000">
+            </div>
+            <!-- Podés meter la cantidad de fotos que quieras, el JS calcula el largo solo -->
+          </div>
+        
+        </div>
+      </div>
+
+      <div class="halfempty"></div>
+
+    </div>
+  </article>
+
+  <div class="chapter-separator"></div>
+
+  <!-- ─── 2003 ─── -->
+  <article class="chapter" id="year-2003">
+    <div class="chapter-sticky">
+      <img class="sch-corner-photo" src="assets/sch-2003.png" style="padding-left: 100px;">
+
+      <div class="starting-lights">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+      </div>
+
+      <div class="chapter-badge">● CAPÍTULO IV</div>
+      <div class="chapter-year">2003</div>
+    </div>
+
+    <div class="chapter-content">
+
+      <div class="empty"></div>
+
+      <div class="chapter-tagline">El récord histórico</div>
+      <p class="chapter-desc">
+        El año más peleado de la saga. Kimi Räikkönen y Juan Pablo Montoya 
+        desafiaron seriamente el reinado. Schumacher resistió, 
+        y escribió su nombre en la historia definitivamente.
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-pill">
+          <div class="s-val">6</div>
+          <div class="s-key">Victorias</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">93</div>
+          <div class="s-key">Puntos</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">5</div>
+          <div class="s-key">Poles</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val red">14</div>
+          <div class="s-key">Podios</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">2</div>
+          <div class="s-key">DNFs</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">1°</div>
+          <div class="s-key">Constructores</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px">
+        <div class="race-pills" id="pills-2003"></div>
+      </div>
+
+      <div class="empty"></div>
+
+      <div class="content-card">
+        <div class="card-label">LA BATALLA</div>
+        <div class="card-title">Tensión hasta Suzuka</div>
+        <p class="card-text">
+          Räikkönen llegó a las últimas fechas a solo 8 puntos de Schumacher. 
+          El campeonato se definió en la última carrera del año. 
+          La tensión narrativa fue la más intensa del período 2000–2004.
+        </p>
+        <div class="grafico-container">
+          <div class="flourish-embed flourish-bar-chart-race grafico" data-src="visualisation/29384278"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/29384278/thumbnail" width="100%" alt="bar-chart-race visualization" /></noscript></div>
+        </div>
+      </div>
+
+      <div class="empty"></div>
+
+      <div class="content-card">
+        <div class="card-label">EL RÉCORD</div>
+        <div class="card-title">6 campeonatos: superó a Fangio</div>
+        <p class="card-text">
+          Con el sexto título, Schumacher se convirtió en el piloto con 
+          más campeonatos en la historia de la Fórmula 1, superando 
+          la marca de 5 que compartía con Juan Manuel Fangio desde 2002.
+        </p>
+        <div class="grafico-container">
+          <div class="flourish-embed flourish-chart grafico" style="width: 60%;" data-src="visualisation/29386607"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/29386607/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
+        </div>
+        </div>
+
+      <div class="empty"></div>
+
+      <div class="content-card quote-card">
+        <p class="quote-text">
+          "Estoy muy feliz, pero también completamente agotado y exhausto. 
+          [...] En este momento, no tengo sentimientos sobre el título en sí; lo único que siento es 
+          por mi equipo. Estoy orgulloso de todo lo que hemos logrado juntos."</p>
+        <div class="quote-attr">— MICHAEL SCHUMACHER · 2003</div>
+      </div>
+
+      <div class="halfempty"></div>
+
+      <div class="gallery-zone">
+        <!-- Contenedor intermedio que se queda "fijo" en pantalla mientras scrolleas -->
+        <div class="gallery-stage">
+          
+          <!-- El track que contiene las fotos y se desplaza horizontalmente -->
+          <div class="gallery-track">
+            <div class="gallery-item">
+              <img src="https://db926pi9qb9rr.cloudfront.net/imgproxy/2400x,sa0bY1Q4sSOWvnkn9uw7beVxT7X6pL8MMOaKDvNBW96Q=/https://storage-2.hrzg.de/michaelschumacher/public/racing-legend/2003/legend-2003-03.jpg?p1" alt="Foto 1 - 2000">
+            </div>
+            <div class="gallery-item">
+              <img src="https://db926pi9qb9rr.cloudfront.net/imgproxy/2400x,s93myFULDf-cjVvkKku45SA54F61_M7hwMlqUaGxTdFI=/https://storage-2.hrzg.de/michaelschumacher/public/racing-legend/2003/legend-2003-40.jpg?p1" alt="Foto 2 - 2000">
+            </div>
+            <div class="gallery-item">
+              <img src="https://db926pi9qb9rr.cloudfront.net/imgproxy/2400x,sO9Npx6ksFdi-Fo2mnD5yAVqnYjxrziwpYNGLtC7bMv8=/https://storage-2.hrzg.de/michaelschumacher/public/racing-legend/2003/legend-2003-55.jpg?p1" alt="Foto 3 - 2000">
+            </div>
+            <div class="gallery-item">
+              <img src="https://db926pi9qb9rr.cloudfront.net/imgproxy/2400x,s7vVPDpROZMbaEzIWEN6W1Xv2lMeTteYrJNg0QzTb2_I=/https://storage-2.hrzg.de/michaelschumacher/public/racing-legend/2003/legend-2003-59.jpg?p1" alt="Foto 4 - 2000">
+            </div>
+            <!-- Podés meter la cantidad de fotos que quieras, el JS calcula el largo solo -->
+          </div>
+        
+        </div>
+      </div>
+
+      <div class="halfempty"></div>
+      
+    </div>
+  </article>
+
+  <div class="chapter-separator"></div>
+
+  <!-- ─── 2004 ─── -->
+
+  <article class="chapter" id="year-2004">
+
+    <div class="chapter-sticky">
+      <img class="sch-corner-photo" src="assets/sch-2004.png" style="width: 89%;">
+
+      <div class="starting-lights">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+      </div>
+
+      <div class="chapter-badge">● CAPÍTULO V</div>
+      <div class="chapter-year">2004</div>
+    </div>
+
+    <div class="chapter-content">
+
+      <div class="empty"></div>
+
+      <div class="chapter-tagline">La última coronación</div>
+      <p class="chapter-desc">
+        Un retorno al dominio de 2002. El F2004, considerado uno de los 
+        monoplazas más rápidos de la historia, llevó a Schumacher 
+        a su séptimo y último campeonato de manera demoledora.
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-pill">
+          <div class="s-val">13</div>
+          <div class="s-key">Victorias</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">148</div>
+          <div class="s-key">Puntos</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">8</div>
+          <div class="s-key">Poles</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val red">15</div>
+          <div class="s-key">Podios</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">2</div>
+          <div class="s-key">DNFs</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">1°</div>
+          <div class="s-key">Constructores</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px">
+        <div class="race-pills" id="pills-2004"></div>
+      </div>
+
+      <div class="empty"></div>
+
+      <div class="content-card">
+        <div class="card-label">EL AUTO</div>
+        <div class="card-title">Ferrari F2004: el monoplaza icónico</div>
+        <p class="card-text">
+          El F2004 es considerado uno de los autos de F1 más rápidos y 
+          dominantes jamás construidos. 13 victorias en 18 fechas. 
+          El tiempo de vuelta rápida en clasificación en muchos 
+          circuitos perduró por años.
+        </p>
+      </div>
+      <!-- ESPACIO PARA IMAGEN DEL F2004 -->
+      <div class="mosaic-container">
+        <div class="mosaic-item item-top-left">
+          <img src="https://db926pi9qb9rr.cloudfront.net/imgproxy/2400x,s3Ft4cpKc8OQIEZS7UNFQ0BD5G9q1XhTArn97A5MIkyU=/https://storage-2.hrzg.de/michaelschumacher/public/racing-legend/2004/legend-2004-06.jpg?p1" alt="Auto 1">
+        </div>
+        <div class="mosaic-item item-top-right">
+          <img src="https://www.autohebdo.fr/wp-content/uploads/2024/09/DPPI_00001392_149-e1727265902892.jpg" alt="Auto 3">
+        </div>
+        <div class="mosaic-item item-bottom-left">
+          <img src="https://i.pinimg.com/1200x/3d/45/aa/3d45aa8b93a513fb6aeb51ba9d1e3fa4.jpg" alt="Auto 3">
+        </div>
+        <div class="mosaic-item item-bottom-right">
+          <img src="https://i.pinimg.com/1200x/d3/08/0c/d3080cf2fd38ed6f9933c47bd03b4056.jpg" alt="Auto 4">
+        </div>
+      </div>
+      
+      <!-- AUDIO DEL MOTOR V10 -->
+      <div class="content-card">
+        <div class="card-label">SONIDO HISTÓRICO</div>
+        <div class="audio-player">
+          <button class="play-btn" id="audioPlay2004">▶</button>
+          <div class="volume-container">
+                <button id="muteBtnS" aria-label="Mute">
+                  <svg id="volumeUpIconS" viewBox="0 0 24 24" style="display:none;"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                  <svg id="volumeOffIconS" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.21.05-.42.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+                </button>
+
+                <!-- Barra deslizante de volumen (Rango de 0 a 1, empieza en 0 porque el video inicia muteado) -->
+                <input type="range" id="volumeSliderS" min="0" max="1" step="0.1" value="0">
+              </div>
+          <div class="audio-info">
+            <div class="audio-title">Motor V10 Ferrari F2004</div>
+            <div class="audio-sub">FERRARI · 900+ CV · 19.000 RPM</div>
+          </div>
+          <div class="audio-waveform">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+        <!-- ESPACIO PARA AUDIO REAL -->
+        <audio id="motor-f2004" src="audio/f2004-v10.mp3"></audio>
+      </div>
+
+      <div class="empty"></div>
+
+      <div class="content-card">
+        <div class="card-label">CON EL ALEMÁN Y EL BRASILERO</div>
+        <div class="card-title">Ferrari en lo más alto</div>
+        <p class="card-text">
+          Gracias a la combinación del talento de sus pilotos, que terminaron la temporada en los 
+          dos primeros puestos, y de uno de los mejores monoplazas de la historia, la escudería 
+          dominó ampliamente el Campeonato de Constructores y se quedó con el título sin oposición.
+        </p>
+        <div class="grafico-container">
+          <div class="flourish-embed flourish-chart grafico" data-src="visualisation/29675303"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/29675303/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
+        </div>
+      </div>
+
+      <div class="empty"></div>
+
+      <div>
+        <p class="quote-text">
+          "No siempre se puede ser el ganador, pero, a mis ojos, hoy también salí vencedor al 
+          conquistar el campeonato del mundo. [...] Significa muchísimo para mí ganar mi séptimo 
+          título aquí, en Spa-Francorchamps, de todos los lugares posibles, y especialmente porque 
+          este es el Gran Premio número 700 de Ferrari. Realmente es algo extraordinario."</p>
+        <div class="quote-attr">— MICHAEL SCHUMACHER · 2004</div>
+      </div>
+
+      <div class="halfempty"></div>
+
+      <div class="gallery-zone">
+        <!-- Contenedor intermedio que se queda "fijo" en pantalla mientras scrolleas -->
+        <div class="gallery-stage">
+          
+          <!-- El track que contiene las fotos y se desplaza horizontalmente -->
+          <div class="gallery-track">
+            <div class="gallery-item">
+              <img src="https://db926pi9qb9rr.cloudfront.net/imgproxy/2400x,srzYZ9iUrkfvswQNIAAFaE5AzGrT-tsltBAuZCltslo8=/https://storage-2.hrzg.de/michaelschumacher/public/racing-legend/2004/legend-2004-03.jpg?p1" alt="Foto 1 - 2000">
+            </div>
+            <div class="gallery-item">
+              <img src="https://db926pi9qb9rr.cloudfront.net/imgproxy/2400x,sFMcXwXWQ-q5zu3nm8DffN86VqFC5ZLAc_zs_rqMupzc=/https://storage-2.hrzg.de/michaelschumacher/public/racing-legend/2004/legend-2004-22.jpg?p1" alt="Foto 2 - 2000">
+            </div>
+            <div class="gallery-item">
+              <img src="https://db926pi9qb9rr.cloudfront.net/imgproxy/2400x,sEDP5DFfGSH7CXRflDiWyPco9ThH2McH_0TVI1xE5px8=/https://storage-2.hrzg.de/michaelschumacher/public/racing-legend/2004/legend-2004-39.jpg?p1" alt="Foto 3 - 2000">
+            </div>
+            <div class="gallery-item">
+              <img src="https://db926pi9qb9rr.cloudfront.net/imgproxy/2400x,sq5zEcy_HFG69858Lay65z-SVGUatScPpZZEI0pWI-No=/https://storage-2.hrzg.de/michaelschumacher/public/racing-legend/2004/legend-2004-691.jpg?p1" alt="Foto 4 - 2000">
+            </div>
+            <!-- Podés meter la cantidad de fotos que quieras, el JS calcula el largo solo -->
+          </div>
+        </div>
+
+      <div class="empty"></div>
+
+    </div>
+  </article>
+
+</div><!-- end #chapters -->
+
+<div class="divider-red"></div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- VISUALIZACIONES                                         -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="visualizations">
+  <div class="dominio-scroll" id="dominioScroll">
+    <h2 class="dominio-sr-title">El dominio en perspectiva</h2>
+
+    <div class="dominio-header-lock" aria-hidden="true">
+      <div class="dominio-header-scrim"></div>
+      <div class="dominio-title dominio-title-multiline">
+        <div class="dominio-kicker">Datos y visualizaciones</div>
+        <span>El dominio</span>
+        <span class="dominio-title-accent">en perspectiva</span>
+      </div>
+      <div class="dominio-title dominio-title-single">
+        <span>El dominio </span><span class="dominio-title-accent">en perspectiva</span>
+      </div>
+    </div>
+
+    <div class="dominio-intro-scroll" id="dominioIntroScroll">
+      <div class="dominio-intro-stage">
+        <div class="dominio-chart-panel dominio-chart-left" id="dominioChartLeft">
+          <div class="dominio-chart-frame">
+            <div class="flourish-embed flourish-chart" data-src="visualisation/29363176">
+              <noscript><img src="https://public.flourish.studio/visualisation/29363176/thumbnail" width="100%" alt="Visualización de victorias por año" /></noscript>
+            </div>
+          </div>
+        </div>
+
+        <div class="dominio-chart-panel dominio-chart-right" id="dominioChartRight">
+          <div class="dominio-chart-frame">
+            <div class="flourish-embed flourish-chart" data-src="visualisation/29383749">
+              <noscript><img src="https://public.flourish.studio/visualisation/29383749/thumbnail" width="100%" alt="Visualización de puntos por año" /></noscript>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dominio-map-phase">
+      <div class="dominio-map-card schumi-map-card">
+        <div class="schumi-map-scroll" id="schumiMapScroll">
+          <div class="schumi-map-stage">
+            <aside class="schumi-map-info is-intro">
+              <div class="schumi-map-kicker">Geografía del dominio</div>
+              <div class="schumi-map-title">Dónde ganó <span>Schumacher</span></div>
+              <div class="schumi-map-copy">
+                <div class="schumi-map-line is-race-only">
+                  <span>Gran Premio</span>
+                  <strong id="mapGpName">Todos los grandes premios</strong>
+                </div>
+                <div class="schumi-map-line is-race-only">
+                  <span>Circuito</span>
+                  <strong id="mapCircuitName">2000-2004</strong>
+                </div>
+                <div class="schumi-map-line" id="mapCountryLine">
+                  <span id="mapCountryLabel">País</span>
+                  <strong id="mapCountryName">17 sedes</strong>
+                </div>
+                <div class="schumi-map-line">
+                  <span id="mapWinsLabelText">Veces que la ganó</span>
+                  <strong id="mapWinsText">50 victorias</strong>
+                </div>
+                <div class="schumi-map-line is-race-only">
+                  <span>Años</span>
+                  <strong id="mapYearsText">2000-2004</strong>
+                </div>
+              </div>
+              <div class="schumi-map-progress"><span id="mapProgressFill"></span></div>
+            </aside>
+
+            <div class="schumi-map-wrap">
+              <div class="schumi-map-counter"><b id="mapStepNow">0</b> / <span id="mapStepTotal">17</span> puntos revelados</div>
+              <svg class="schumi-map-svg" viewBox="0 0 1580 842" role="img" aria-label="Mapa animado con los Grandes Premios ganados por Michael Schumacher entre 2000 y 2004">
+                <g class="schumi-map-camera" id="schumiMapCamera">
+                  <image class="schumi-map-image" href="assets/schumi_world_map_reference.png" x="0" y="0" width="1580" height="842" preserveAspectRatio="xMidYMid meet"></image>
+                  <g id="schumiMapPoints"></g>
+                </g>
+              </svg>
+              <div class="schumi-map-caption">Mapa gris · puntos rojos = GP ganados</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://public.flourish.studio/resources/embed.js"></script>
+  </div>
+</section>
+
+<div class="divider-red"></div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- GOAT                                                    -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="goat">
+  <div class="goat-bg" aria-hidden="true"></div>
+
+  <div class="goat-intro-scroll" id="goatIntroScroll">
+    <div class="goat-intro-stage">
+      <div class="goat-header goat-intro-header" id="goatIntroHeader">
+        <h2 class="goat-title">¿El <span class="accent">GOAT</span>?</h2>
+        <div class="goat-sub">EL LEGADO DE UNA DINASTÍA · 2000–2004</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="goat-content">
+    <div class="goat-totals">
+      <div class="goat-stat fade-in">
+        <div class="gs-num">5</div>
+        <div class="gs-label">Campeonatos<br>consecutivos</div>
+      </div>
+      <div class="goat-stat fade-in">
+        <div class="gs-num">48</div>
+        <div class="gs-label">Victorias<br>en el período</div>
+      </div>
+      <div class="goat-stat fade-in">
+        <div class="gs-num">616</div>
+        <div class="gs-label">Puntos<br>acumulados</div>
+      </div>
+      <div class="goat-stat fade-in">
+        <div class="gs-num">7</div>
+        <div class="gs-label">Campeonatos<br>en carrera total</div>
+      </div>
+    </div>
+
+    <!-- Comparison -->
+    <div class="comparison-section fade-in">
+      <div class="flourish-embed flourish-chart" data-src="visualisation/29666739"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/29666739/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
+    </div>
+
+    <!-- Final question -->
+    <div class="final-question fade-in">
+      <div class="fq-rule"></div>
+      <p class="fq-text">
+        ¿Fue Schumacher el piloto más 
+        <span class="q">dominante</span> 
+        de la historia de la Fórmula 1?
+      </p>
+      <p class="fq-reflection">
+        Los números dicen que sí. Entre 2000 y 2004, Schumacher no solo ganó: 
+        <strong>redefinió lo que significaba ganar</strong>. Elevó los estándares 
+        del trabajo en fábrica, la preparación física, el análisis de datos y 
+        la cultura de victorias. Ferrari pasó de ser el equipo romántico 
+        que siempre prometía a ser la máquina perfecta que siempre entregaba.
+      </p>
+      <p class="fq-reflection">
+        El debate entre Schumacher, Hamilton, Senna y Fangio 
+        permanecerá abierto para siempre. Pero lo que está fuera de duda 
+        es que la era 2000–2004 representa <strong>el reinado más absoluto 
+        de la historia moderna de la Fórmula 1</strong>.
+      </p>
+      <div class="fq-rule"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- FOOTER                                                  -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="fb-title">LOS AÑOS DORADOS</div>
+      <div class="fb-sub">MICHAEL SCHUMACHER × FERRARI · 2000–2004</div>
+      <p>Un proyecto de scrollytelling sobre la dinastía más dominante de la historia moderna de la Fórmula 1. Desarrollado como trabajo periodístico de visualización de datos.</p>
+    </div>
+    <div class="footer-col">
+      <h4>CRÉDITOS</h4>
+      <ul>
+        <li><strong>Autores</strong><br><em>Bautista Goya<br>Federico Del Cuadro<br>José Nicolás Rodríguez López</em></li>
+        <li><strong>Materia</strong><br><em>Visualización de Datos</em></li>
+        <li><strong>Institución</strong><br><em>Universidad Torcuato Di Tella</em></li>
+        <li><strong>Año</strong><br><em>2026</em></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>FUENTES DE DATOS</h4>
+      <ul>
+        <li>Ergast Developer API</li>
+        <li>FIA Official Statistics</li>
+        <li>Formula1.com Historical Data</li>
+        <li>StatsF1.com</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- JAVASCRIPT                                              -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<script>
+// ─── SPEED LINES ───
+const speedLinesContainer = document.getElementById('speedLines');
+for (let i = 0; i < 12; i++) {
+  const line = document.createElement('span');
+  const top = Math.random() * 100;
+  const width = 100 + Math.random() * 300;
+  const delay = Math.random() * 3;
+  const duration = 1.2 + Math.random() * 1.5;
+  line.style.cssText = `
+    top: ${top}%;
+    width: ${width}px;
+    animation-delay: ${delay}s;
+    animation-duration: ${duration}s;
+  `;
+  speedLinesContainer.appendChild(line);
+}
+
+// ─── RACE RESULT PILLS ───
+const raceData = {
+  '2000': [1,1,2,1,3,2,1,2,1,'DNF',1,2,1,3,'DNF',1,1],
+  '2001': [1,2,1,1,1,'DNF',2,1,1,3,1,1,2,1,'DNF',3,1],
+  '2002': [1,1,2,1,1,1,1,1,1,2,2,1,1,1,3,1,2],
+  '2003': [1,'DNF',2,1,3,2,1,'DNF',2,1,3,1,2,2,3,1],
+  '2004': [1,1,1,1,1,2,1,1,1,1,1,1,3,2,'DNF',1,2,'DNF'],
+};
+
+Object.entries(raceData).forEach(([year, results]) => {
+  const container = document.getElementById(`pills-${year}`);
+  if (!container) return;
+  results.forEach((pos, i) => {
+    const pill = document.createElement('div');
+    pill.className = `race-pill ${pos === 1 ? 'p1' : pos === 2 ? 'p2' : pos === 3 ? 'p3' : pos === 'DNF' ? 'dnf' : 'other'}`;
+    pill.textContent = pos === 'DNF' ? 'X' : pos;
+    pill.title = `Carrera ${i+1}: ${pos === 'DNF' ? 'Abandono' : 'P' + pos}`;
+    container.appendChild(pill);
+  });
+});
+
+// ─── SCROLL PROGRESS & CAR ───
+const progressFill = document.getElementById('progress-fill');
+const carIcon = document.getElementById('car-icon');
+
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = Math.min((scrollTop / docHeight) * 100, 100);
+  progressFill.style.height = pct + '%';
+  carIcon.style.top = pct + '%';
+}, { passive: true });
+
+// ─── NAV DOTS ───
+const navDots = document.querySelectorAll('.nav-dot');
+navDots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    const targetId = dot.dataset.target;
+    const target = document.getElementById(targetId);
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// ─── INTERSECTION OBSERVER: FADE IN ───
+const fadeEls = document.querySelectorAll('.fade-in, .tl-item');
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+fadeEls.forEach(el => fadeObserver.observe(el));
+
+// ─── CONTENT CARD REVEALS ───
+const cards = document.querySelectorAll('.content-card');
+const cardObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+cards.forEach(card => cardObserver.observe(card));
+
+// ─── BAR CHART ANIMATIONS ───
+const barFills = document.querySelectorAll('.bar-fill');
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const target = entry.target;
+      const width = target.dataset.width || '0';
+      target.style.width = width + '%';
+      barObserver.unobserve(target);
+    }
+  });
+}, { threshold: 0.5 });
+barFills.forEach(bar => barObserver.observe(bar));
+
+// ─── COMPARISON BAR ANIMATIONS ───
+const compFills = document.querySelectorAll('.comp-bar-fill');
+const compObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const target = entry.target;
+      const width = target.dataset.width || '0';
+      target.style.width = width + '%';
+      compObserver.unobserve(target);
+    }
+  });
+}, { threshold: 0.5 });
+compFills.forEach(bar => compObserver.observe(bar));
+
+// ─── VICTORIES BAR CHART ───
+const vcBars = document.querySelectorAll('.vc-bar');
+const vcObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      vcBars.forEach((bar, i) => {
+        setTimeout(() => {
+          bar.style.height = bar.dataset.height;
+          bar.style.transition = 'height 1s cubic-bezier(0.22, 1, 0.36, 1)';
+        }, i * 100);
+      });
+      vcObserver.disconnect();
+    }
+  });
+}, { threshold: 0.3 });
+const vcChart = document.getElementById('vic-chart');
+if (vcChart) vcObserver.observe(vcChart);
+
+// ─── ACTIVE NAV DOTS ───
+const sections = ['hero','intro','year-2000','year-2001','year-2002','year-2003','year-2004','goat'];
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      const idx = sections.indexOf(id);
+      navDots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+  });
+}, { threshold: 0.3 });
+sections.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) sectionObserver.observe(el);
+});
+
+// ─── PANTALLA COMPLETA PARA FOTOS DE MOSAICO 2004 ───
+document.addEventListener("DOMContentLoaded", () => {
+  const items = document.querySelectorAll(".mosaic-item");
+  const overlay = document.getElementById("mosaicOverlay");
+
+  items.forEach(item => {
+    item.addEventListener("click", () => {
+      // Si ya está expandido, lo cerramos
+      if (item.classList.contains("is-expanded")) {
+        closeExpanded();
+      } else {
+        // Cerramos cualquier otro por las dudas, y expandimos este
+        closeExpanded();
+        item.classList.add("is-expanded");
+        overlay.classList.add("is-active");
+      }
+    });
+  });
+
+  // Cerrar al hacer clic en el fondo oscuro
+  overlay.addEventListener("click", closeExpanded);
+
+  // Cerrar si se presiona la tecla Escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeExpanded();
+  });
+
+  function closeExpanded() {
+    const activeItem = document.querySelector(".mosaic-item.is-expanded");
+    if (activeItem) activeItem.classList.remove("is-expanded");
+    overlay.classList.remove("is-active");
+  }
+});
+
+// ─── AUDIO PLAY BUTTON (Interacción Real) ───
+const playBtn = document.getElementById('audioPlay2004');
+// Buscamos el elemento <audio> que creaste en el HTML
+const audioTrack = document.getElementById('motor-f2004');
+const volumeSliderS = document.getElementById('volumeSliderS');
+const muteBtnS = document.getElementById('muteBtnS');
+const volumeUpIconS = document.getElementById('volumeUpIconS');
+const volumeOffIconS = document.getElementById('volumeOffIconS');
+
+if (playBtn && audioTrack) {
+  playBtn.addEventListener('click', () => {
+    if (audioTrack.paused) {
+      audioTrack.play();
+      playBtn.textContent = '⏸'; // Cambia el ícono a Pausa
+    } else {
+      audioTrack.pause();
+      playBtn.textContent = '▶'; // Vuelve a cambiar a Play
+    }
+  });
+
+  // BONUS CRUCIAL: Si el audio termina de reproducirse solo, 
+  // el botón vuelve automáticamente al ícono de Play (▶)
+  audioTrack.addEventListener('ended', () => {
+    playBtn.textContent = '▶';
+  });
+}
+
+// --- Control manual de volumen (Slider) ---
+volumeSliderS.addEventListener('input', (e) => {
+  const volumeValue = e.target.value;
+  audioTrack.volume = volumeValue;
+  
+  if (volumeValue == 0) {
+    audioTrack.muted = true;
+    volumeUpIconS.style.display = 'none';
+    volumeOffIconS.style.display = 'block';
+  } else {
+    audioTrack.muted = false;
+    lastVolume = volumeValue; // Guardamos el nivel actual
+    volumeUpIconS.style.display = 'block';
+    volumeOffIconS.style.display = 'none';
+    unmuteBanner.classList.add('fade-out'); // Oculta el banner de "Click para activar sonido"
+  }
+});
+
+// --- Botón de Mute (Modificado para sincronizarse con el slider) ---
+muteBtnS.addEventListener('click', () => {
+  audioTrack.muted = !audioTrack.muted;
+  
+  if (audioTrack.muted) {
+    volumeSliderS.value = 0;
+    volumeUpIconS.style.display = 'none';
+    volumeOffIconS.style.display = 'block';
+  } else {
+    // Al desmutear, vuelve al último volumen guardado (o 0.5 si era cero)
+    audioTrack.volume = lastVolume == 0 ? 0.5 : lastVolume;
+    volumeSliderS.value = audioTrack.volume;
+    volumeUpIconS.style.display = 'block';
+    volumeOffIconS.style.display = 'none';
+    unmuteBanner.classList.add('fade-out');
+  }
+});
+
+// ─── TOPNAV BACKGROUND ON SCROLL ───
+const topnav = document.getElementById('topnav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 80) {
+    topnav.style.background = 'rgba(10,10,10,0.97)';
+    topnav.style.borderBottom = '1px solid rgba(201,168,76,0.1)';
+  } else {
+    topnav.style.background = 'linear-gradient(to bottom, rgba(10,10,10,0.95), transparent)';
+    topnav.style.borderBottom = 'none';
+  }
+}, { passive: true });
+
+// ═══════════════ ACTO 1 · EL PESO DE LA SEQUÍA ═══════════════
+(function () {
+  // Campeones de PILOTOS 1979–1999 (la sequía real de Ferrari fue de títulos de pilotos)
+  const champions = [
+    { year: 1979, team: 'Ferrari',  color: '#2a0202', accent: '#ff2b1d' },
+    { year: 1980, team: 'Williams', color: '#06122e', accent: '#f6c700' },
+    { year: 1981, team: 'Brabham',  color: '#11151f', accent: '#9fb2d4' },
+    { year: 1982, team: 'Williams', color: '#06122e', accent: '#f6c700' },
+    { year: 1983, team: 'Brabham',  color: '#11151f', accent: '#9fb2d4' },
+    { year: 1984, team: 'McLaren',  color: '#1f1f1f', accent: '#ff6a61' },
+    { year: 1985, team: 'McLaren',  color: '#1f1f1f', accent: '#ff6a61' },
+    { year: 1986, team: 'McLaren',  color: '#1f1f1f', accent: '#ff6a61' },
+    { year: 1987, team: 'Williams', color: '#06122e', accent: '#f6c700' },
+    { year: 1988, team: 'McLaren',  color: '#1f1f1f', accent: '#ff6a61' },
+    { year: 1989, team: 'McLaren',  color: '#1f1f1f', accent: '#ff6a61' },
+    { year: 1990, team: 'McLaren',  color: '#1f1f1f', accent: '#ff6a61' },
+    { year: 1991, team: 'McLaren',  color: '#1f1f1f', accent: '#ff6a61' },
+    { year: 1992, team: 'Williams', color: '#06122e', accent: '#f6c700' },
+    { year: 1993, team: 'Williams', color: '#06122e', accent: '#f6c700' },
+    { year: 1994, team: 'Benetton', color: '#06241c', accent: '#22c98a' },
+    { year: 1995, team: 'Benetton', color: '#06241c', accent: '#22c98a' },
+    { year: 1996, team: 'Williams', color: '#06122e', accent: '#f6c700' },
+    { year: 1997, team: 'Williams', color: '#06122e', accent: '#f6c700' },
+    { year: 1998, team: 'McLaren',  color: '#1f1f1f', accent: '#ff6a61' },
+    { year: 1999, team: 'McLaren',  color: '#1f1f1f', accent: '#ff6a61' },
+  ];
+  const stripColor = { Ferrari: '#ff1801', Williams: '#1746c4', McLaren: '#dcdcdc', Benetton: '#1f9e6b', Brabham: '#5b6b86' };
+  const phrases = {
+    1979: 'El último título. Jody Scheckter corona a Ferrari.',
+    1980: 'Williams toma el poder.',
+    1984: 'Comienza la era McLaren.',
+    1988: 'Muere Enzo Ferrari.',
+    1990: 'Senna es invencible.',
+    1992: 'Williams aplasta a todos.',
+    1994: 'Un alemán deslumbra… pero con Benetton.',
+    1998: 'Häkkinen y McLaren, otra vez.',
+    1999: '20 años. Cero títulos para Maranello.'
+  };
+
+  const track     = document.getElementById('drought');
+  const yearEl     = document.getElementById('droughtYear');
+  const teamEl     = document.getElementById('droughtTeam');
+  const phraseEl   = document.getElementById('droughtPhrase');
+  const bgEl       = document.getElementById('droughtBg');
+  const blackoutEl = document.getElementById('droughtBlackout');
+  const stripEl    = document.getElementById('droughtStrip');
+  if (!track) return;
+
+  // ── Fotos de cada año de la sequía (crossfade + ken-burns) ──
+  // Un archivo por año: sequia-1 = 1979, sequia-2 = 1980, … sequia-21 = 1999.
+  // Solo importa el NOMBRE BASE; la extensión (jpg/png/…) se detecta sola.
+  const photoLayers = [
+    document.getElementById('droughtPhotoA'),
+    document.getElementById('droughtPhotoB')
+  ];
+  let photoFront = 1;                 // capa visible actual (arrancamos "vacío")
+  const photoNames = {};
+  const photoSideByYear = {};
+  champions.forEach(function (c, i) {
+    photoNames[c.year] = 'sequia-' + (i + 1);
+    photoSideByYear[c.year] = (i % 2 === 0) ? 'side-right' : 'side-left';
+  });
+  const EXTS = ['jpg', 'jpeg', 'png', 'webp', 'JPG', 'JPEG', 'PNG', 'WEBP'];
+  const photoSrc = {};
+
+  function setPhoto(year) {
+    if (!photoSrc[year]) return;      // si todavía no cargó, dejamos la que estaba
+    const incoming = photoLayers[photoFront ^ 1];
+    const outgoing = photoLayers[photoFront];
+    incoming.style.backgroundImage = 'url("' + photoSrc[year] + '")';
+    incoming.classList.remove('side-left', 'side-right');
+    incoming.classList.add(photoSideByYear[year] || 'side-right');
+    incoming.classList.remove('show');
+    void incoming.offsetWidth;        // reinicia el efecto (fundido + zoom) en cada año
+    incoming.classList.add('show');
+    outgoing.classList.remove('show');
+    photoFront ^= 1;
+  }
+
+  function tryLoad(year, candidates, i) {
+    if (i >= candidates.length) {
+      console.warn('[sequía] Falta la foto de ' + year + ' (assets/' + photoNames[year] + '.jpg/png/…)');
+      return;
+    }
+    const im = new Image();
+    im.onload = function () {
+      photoSrc[year] = candidates[i];
+      if (current >= 0 && champions[current] && champions[current].year === year) setPhoto(year);
+    };
+    im.onerror = function () { tryLoad(year, candidates, i + 1); };
+    im.src = candidates[i];
+  }
+
+  Object.keys(photoNames).forEach(function (y) {
+    const year = parseInt(y, 10);
+    const cands = EXTS.map(function (e) { return 'assets/' + photoNames[year] + '.' + e; });
+    tryLoad(year, cands, 0);
+  });
+
+  // Construir la tira de datos (una celda por año)
+  champions.forEach(c => {
+    const cell = document.createElement('div');
+    cell.className = 'strip-cell';
+    cell.style.background = stripColor[c.team];
+    cell.title = c.year + ' · ' + c.team;
+    stripEl.appendChild(cell);
+  });
+  const cells = Array.from(stripEl.children);
+
+  const BLACKOUT_AT = 0.88;
+  let current = -1;
+
+  function update() {
+    const rect = track.getBoundingClientRect();
+    const total = track.offsetHeight - window.innerHeight;
+    let p = total > 0 ? (-rect.top) / total : 0;
+    p = Math.max(0, Math.min(1, p));
+
+    blackoutEl.classList.toggle('show', p >= BLACKOUT_AT);
+
+    const pp = Math.min(p / BLACKOUT_AT, 1);
+    const idx = Math.min(champions.length - 1, Math.floor(pp * champions.length));
+
+    cells.forEach((cell, i) => cell.classList.toggle('filled', i <= idx));
+
+    if (idx !== current) {
+      current = idx;
+      const c = champions[idx];
+      yearEl.textContent = c.year;
+      teamEl.textContent = c.team === 'Ferrari' ? 'FERRARI — CAMPEÓN' : c.team.toUpperCase() + ' — CAMPEÓN';
+      teamEl.style.color = c.accent;
+      bgEl.style.background = 'radial-gradient(ellipse at 50% 45%, ' + c.color + ' 0%, #060606 80%)';
+      setPhoto(c.year);
+
+      if (phrases[c.year]) {
+        phraseEl.textContent = phrases[c.year];
+        phraseEl.classList.toggle('memoriam', c.year === 1988);
+        phraseEl.classList.remove('flash');
+        void phraseEl.offsetWidth;     // reinicia la animación
+        phraseEl.classList.add('flash');
+      } else {
+        phraseEl.textContent = '';
+        phraseEl.classList.remove('flash');
+      }
+    }
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+
+// ─── VIDEO CONTAINER ───
+const container = document.getElementById('videoContainer');
+const video = document.getElementById('customVideo');
+const vPlayBtn = document.getElementById('vPlayBtn');
+const muteBtn = document.getElementById('muteBtn');
+const fullscreenBtn = document.getElementById('fullscreenBtn');
+const seekBar = document.getElementById('seekBar');
+const volumeSlider = document.getElementById('volumeSlider');
+
+// Icons
+const playIcon = document.getElementById('playIcon');
+const pauseIcon = document.getElementById('pauseIcon');
+const volumeUpIcon = document.getElementById('volumeUpIcon');
+const volumeOffIcon = document.getElementById('volumeOffIcon');
+
+let timeout;
+
+// --- 1. Play / Pause Functionality ---
+function togglePlay() {
+  if (video.paused) {
+    video.play();
+    playIcon.style.display = 'none';
+    pauseIcon.style.display = 'block';
+  } else {
+    video.pause();
+    playIcon.style.display = 'block';
+    pauseIcon.style.display = 'none';
+  }
+}
+vPlayBtn.addEventListener('click', togglePlay);
+video.addEventListener('click', togglePlay); // Play/pause by clicking video frame
+
+// --- 2. Audio Mute / Unmute y volumen regulable ---
+
+let lastVolume = 0.5; // Guarda el último volumen antes de mutear (por defecto 50%)
+
+// --- Control manual de volumen (Slider) ---
+volumeSlider.addEventListener('input', (e) => {
+  const volumeValue = e.target.value;
+  video.volume = volumeValue;
+  
+  if (volumeValue == 0) {
+    video.muted = true;
+    volumeUpIcon.style.display = 'none';
+    volumeOffIcon.style.display = 'block';
+  } else {
+    video.muted = false;
+    lastVolume = volumeValue; // Guardamos el nivel actual
+    volumeUpIcon.style.display = 'block';
+    volumeOffIcon.style.display = 'none';
+    unmuteBanner.classList.add('fade-out'); // Oculta el banner de "Click para activar sonido"
+  }
+});
+
+// --- Botón de Mute (Modificado para sincronizarse con el slider) ---
+muteBtn.addEventListener('click', () => {
+  video.muted = !video.muted;
+  
+  if (video.muted) {
+    volumeSlider.value = 0;
+    volumeUpIcon.style.display = 'none';
+    volumeOffIcon.style.display = 'block';
+  } else {
+    // Al desmutear, vuelve al último volumen guardado (o 0.5 si era cero)
+    video.volume = lastVolume == 0 ? 0.5 : lastVolume;
+    volumeSlider.value = video.volume;
+    volumeUpIcon.style.display = 'block';
+    volumeOffIcon.style.display = 'none';
+    unmuteBanner.classList.add('fade-out');
+  }
+});
+
+// --- Actualización en la función handleUnmute ---
+// Asegúrate de actualizar tu función handleUnmute existente para que también suba el slider:
+function handleUnmute() {
+  video.muted = false;
+  video.volume = lastVolume;
+  volumeSlider.value = lastVolume;
+  volumeUpIcon.style.display = 'block';
+  volumeOffIcon.style.display = 'none';
+  unmuteBanner.classList.add('fade-out');
+}
+
+// --- 3. Fullscreen Logic ---
+fullscreenBtn.addEventListener('click', () => {
+  if (!document.fullscreenElement) {
+    container.requestFullscreen().catch(err => {
+      console.error(`Fullscreen error: ${err.message}`);
+    });
+  } else {
+    document.exitFullscreen();
+  }
+});
+
+// --- 4. Timeline Progress Tracking & Seeking ---
+// Update progress bar as video plays
+video.addEventListener('timeupdate', () => {
+  const value = (video.currentTime / video.duration) * 100;
+  seekBar.value = isNaN(value) ? 0 : value;
+});
+
+// Seek video timeline when dragging the slider
+seekBar.addEventListener('input', () => {
+  const time = (seekBar.value / 100) * video.duration;
+  video.currentTime = time;
+});
+
+// --- 5. Smart Inactivity Auto-Hide Mechanism ---
+function showControls() {
+  container.classList.add('show-controls');
+  clearTimeout(timeout);
+  
+  // Only auto-hide if the video is actually playing
+  if (!video.paused) {
+    timeout = setTimeout(() => {
+      container.classList.remove('show-controls');
+    }, 2000); // 2 seconds timeout
+  }
+}
+
+// Event listeners to handle mouse movement and inactivity
+container.addEventListener('mousemove', showControls);
+container.addEventListener('mouseenter', showControls);
+video.addEventListener('play', showControls);
+video.addEventListener('pause', showControls);
+
+container.addEventListener('mouseleave', () => {
+  if (!video.paused) {
+    container.classList.remove('show-controls');
+  }
+});
+
+// ─── GALERÍAS HORIZONTALES MULTI-INSTANCIA ───
+(function () {
+  // 1. Buscamos todas las zonas de galería en la página usando su clase
+  const zones = document.querySelectorAll('.gallery-zone');
+  if (zones.length === 0) return;
+
+  const galleries = [];
+
+  // 2. Inicializamos cada galería por separado
+  zones.forEach(zone => {
+    // Buscamos el track que pertenece SÓLO a esta zona
+    const track = zone.querySelector('.gallery-track');
+    if (!track) return;
+
+    const items = Array.from(track.children);
+    if (items.length < 2) return;
+
+    // Calculamos la altura dinámica de esta zona según sus propias fotos
+    zone.style.height = (100 + (items.length - 1) * 100) + 'vh';
+
+    // Guardamos la referencia de ambos elementos para el scroll
+    galleries.push({ zone, track });
+  });
+
+  // 3. Función única que actualiza el movimiento de TODAS las galerías
+  function updateAll() {
+    const windowHeight = window.innerHeight;
+
+    galleries.forEach(({ zone, track }) => {
+      const rect = zone.getBoundingClientRect();
+      
+      // Optimizamos: si la galería ni siquiera está en pantalla, no calculamos nada
+      if (rect.bottom < 0 || rect.top > windowHeight) return;
+
+      const total = zone.offsetHeight - windowHeight;
+      let p = total > 0 ? (-rect.top) / total : 0;
+      p = Math.max(0, Math.min(1, p));
+
+      const maxTranslate = track.scrollWidth - track.clientWidth;
+      track.style.transform = `translateX(${-p * maxTranslate}px)`;
+    });
+  }
+
+  // 4. Eventos globales limpios
+  window.addEventListener('scroll', updateAll, { passive: true });
+  window.addEventListener('resize', () => {
+    // Al redimensionar la pantalla, recalculamos primero las alturas si fuera necesario
+    // (en este caso al usar 'vh' el navegador lo maneja, pero forzamos el update de posición)
+    updateAll();
+  });
+  
+  // Ejecución inicial
+  updateAll();
+})();
+
+// ═══════════════ ACTO 2 · LOS FANTASMAS ANTES DE LA GLORIA ═══════════════
+(function () {
+  const track = document.getElementById('ghosts');
+  const lines = Array.from(document.querySelectorAll('#ghostsLines .ghost-line'));
+  if (!track || !lines.length) return;
+
+  function update() {
+    const rect = track.getBoundingClientRect();
+    const total = track.offsetHeight - window.innerHeight;
+    let p = total > 0 ? (-rect.top) / total : 0;
+    p = Math.max(0, Math.min(1, p));
+    const idx = Math.min(lines.length - 1, Math.floor(p * lines.length));
+    lines.forEach((l, i) => l.classList.toggle('active', i === idx));
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+
+// ═══════════════ MAPA ANIMADO: VICTORIAS DE SCHUMACHER 2000-2004 ═══════════════
+(function () {
+  const scroll = document.getElementById('schumiMapScroll');
+  const camera = document.getElementById('schumiMapCamera');
+  const pointsLayer = document.getElementById('schumiMapPoints');
+  const infoPanel = document.querySelector('.schumi-map-info');
+
+  if (!scroll || !camera || !pointsLayer) return;
+
+  const races = [
+    { nombre: 'Australia', codigo: 'AUS', gp: 'GP de Australia', circuito: 'Albert Park', victorias: 4, anios: ['2000', '2001', '2002', '2004'], lat: -37.8497, lon: 144.968 },
+    { nombre: 'Malasia', codigo: 'MYS', gp: 'GP de Malasia', circuito: 'Sepang', victorias: 4, anios: ['2000', '2001', '2002', '2004'], lat: 2.76083, lon: 101.738 },
+    { nombre: 'Baréin', codigo: 'BHR', gp: 'GP de Baréin', circuito: 'Sakhir', victorias: 1, anios: ['2004'], lat: 26.0325, lon: 50.5106 },
+    { nombre: 'Italia', codigo: 'ITA', gp: 'GP de San Marino', circuito: 'Imola', victorias: 3, anios: ['2000', '2002', '2003'], lat: 44.3439, lon: 11.7167 },
+    { nombre: 'España', codigo: 'ESP', gp: 'GP de España', circuito: 'Barcelona', victorias: 3, anios: ['2001', '2002', '2003'], lat: 41.57, lon: 2.26111 },
+    { nombre: 'Mónaco', codigo: 'MCO', gp: 'GP de Mónaco', circuito: 'Monte Carlo', victorias: 2, anios: ['2001', '2004'], lat: 43.7347, lon: 7.42056 },
+    { nombre: 'Austria', codigo: 'AUT', gp: 'GP de Austria', circuito: 'A1 Ring', victorias: 2, anios: ['2000', '2002'], lat: 47.2197, lon: 14.7647 },
+    { nombre: 'Canadá', codigo: 'CAN', gp: 'GP de Canadá', circuito: 'Gilles Villeneuve', victorias: 2, anios: ['2000', '2004'], lat: 45.5, lon: -73.5228 },
+    { nombre: 'Francia', codigo: 'FRA', gp: 'GP de Francia', circuito: 'Magny-Cours', victorias: 3, anios: ['2001', '2002', '2004'], lat: 46.8642, lon: 3.16361 },
+    { nombre: 'Reino Unido', codigo: 'GBR', gp: 'GP de Gran Bretaña', circuito: 'Silverstone', victorias: 2, anios: ['2002', '2004'], lat: 52.0786, lon: -1.01694 },
+    { nombre: 'Alemania', codigo: 'DEU', gp: 'GP de Alemania', circuito: 'Hockenheim', victorias: 3, anios: ['2000', '2002', '2004'], lat: 49.3278, lon: 8.56583 },
+    { nombre: 'Hungría', codigo: 'HUN', gp: 'GP de Hungría', circuito: 'Hungaroring', victorias: 4, anios: ['2000', '2001', '2002', '2004'], lat: 47.5789, lon: 19.2486 },
+    { nombre: 'Bélgica', codigo: 'BEL', gp: 'GP de Bélgica', circuito: 'Spa-Francorchamps', victorias: 4, anios: ['2000', '2001', '2002', '2004'], lat: 50.4372, lon: 5.97139 },
+    { nombre: 'Estados Unidos', codigo: 'USA', gp: 'GP de Estados Unidos', circuito: 'Indianapolis', victorias: 3, anios: ['2000', '2003', '2004'], lat: 39.795, lon: -86.2347 },
+    { nombre: 'Japón', codigo: 'JPN', gp: 'GP de Japón', circuito: 'Suzuka', victorias: 5, anios: ['2000', '2001', '2002', '2003', '2004'], lat: 34.8431, lon: 136.541 },
+    { nombre: 'Brasil', codigo: 'BRA', gp: 'GP de Brasil', circuito: 'Interlagos', victorias: 2, anios: ['2000', '2002'], lat: -23.7036, lon: -46.6997 },
+    { nombre: 'Italia', codigo: 'ITA', gp: 'GP de Italia', circuito: 'Monza', victorias: 3, anios: ['2000', '2003', '2004'], lat: 45.6156, lon: 9.28111 }
+  ];
+
+  const W = 1580;
+  const H = 842;
+  const totalWins = races.reduce((acc, d) => acc + d.victorias, 0);
+  const totalCountries = races.length;
+  // Coordenadas calibradas sobre la imagen base del mapa (1580x842).
+  const calibratedPoints = {
+    'Albert Park': [1352.42, 660.33],
+    'Sepang': [1218.93, 422.28],
+    'Sakhir': [986.96, 283.26],
+    'Imola': [821.11, 184.70],
+    'Barcelona': [784.97, 198.54],
+    'Monte Carlo': [804.43, 187.61],
+    'A1 Ring': [831.66, 170.50],
+    'Gilles Villeneuve': [499.34, 170.50],
+    'Magny-Cours': [788.07, 172.40],
+    'Silverstone': [772.52, 147.85],
+    'Hockenheim': [808.52, 160.82],
+    'Hungaroring': [848.36, 168.80],
+    'Spa-Francorchamps': [798.15, 155.36],
+    'Indianapolis': [436.80, 207.57],
+    'Suzuka': [1326.78, 234.00],
+    'Interlagos': [579.74, 581.60],
+    'Monza': [811.43, 178.44]
+  };
+
+  const gpName = document.getElementById('mapGpName');
+  const circuitName = document.getElementById('mapCircuitName');
+  const countryLabel = document.getElementById('mapCountryLabel');
+  const countryName = document.getElementById('mapCountryName');
+  const winsLabelText = document.getElementById('mapWinsLabelText');
+  const winsText = document.getElementById('mapWinsText');
+  const yearsText = document.getElementById('mapYearsText');
+  const progressFill = document.getElementById('mapProgressFill');
+  const stepNow = document.getElementById('mapStepNow');
+  const stepTotal = document.getElementById('mapStepTotal');
+
+  function make(tag, attrs) {
+    const node = document.createElementNS('http://www.w3.org/2000/svg', tag);
+    Object.entries(attrs || {}).forEach(([key, value]) => node.setAttribute(key, value));
+    return node;
+  }
+
+  function pointForRace(d) {
+    const point = calibratedPoints[d.circuito];
+    if (point) return point;
+    return [W / 2, H / 2];
+  }
+
+  function formatYears(years) {
+    if (years.length <= 1) return years[0] || '';
+    return `${years.slice(0, -1).join(', ')} y ${years[years.length - 1]}`;
+  }
+
+  function winsPhrase(wins) {
+    return wins === 1 ? '1 vez' : `${wins} veces`;
+  }
+
+  const pointNodes = races.map((d) => {
+    const [x, y] = pointForRace(d);
+    d.x = x;
+    d.y = y;
+
+    const group = make('g', { class: 'schumi-point-group' });
+    const halo = make('circle', { class: 'schumi-win-halo', cx: x, cy: y, r: 7 });
+    const dot = make('circle', { class: 'schumi-win-dot', cx: x, cy: y, r: 7 });
+
+    group.appendChild(halo);
+    group.appendChild(dot);
+    pointsLayer.appendChild(group);
+
+    return { data: d, dot, halo };
+  });
+
+  if (stepTotal) stepTotal.textContent = races.length;
+
+  let currentIdx = -99;
+  let currentMode = '';
+
+  function setPanelState(state) {
+    if (!infoPanel) return;
+    infoPanel.classList.toggle('is-intro', state === 'intro');
+    infoPanel.classList.toggle('is-final', state === 'final');
+  }
+
+  function writeIntro() {
+    setPanelState('intro');
+  }
+
+  function writeRace(d) {
+    setPanelState('race');
+    if (gpName) gpName.textContent = d.gp;
+    if (circuitName) circuitName.textContent = d.circuito;
+    if (countryLabel) countryLabel.textContent = 'País';
+    if (countryName) countryName.textContent = d.nombre;
+    if (winsLabelText) winsLabelText.textContent = 'Veces que la ganó';
+    if (winsText) winsText.textContent = winsPhrase(d.victorias);
+    if (yearsText) yearsText.textContent = formatYears(d.anios);
+  }
+
+  function writeFinal() {
+    setPanelState('final');
+    if (countryLabel) countryLabel.textContent = 'Países donde ganó';
+    if (countryName) countryName.textContent = `${totalCountries} países`;
+    if (winsLabelText) winsLabelText.textContent = 'Victorias totales';
+    if (winsText) winsText.textContent = `${totalWins} victorias`;
+  }
+
+  function update() {
+    const rect = scroll.getBoundingClientRect();
+    const total = scroll.offsetHeight - window.innerHeight;
+    let p = total > 0 ? (-rect.top) / total : 0;
+    p = Math.max(0, Math.min(1, p));
+
+    const eased = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+    const raw = eased * (races.length + 1.6);
+    const idx = Math.min(races.length - 1, Math.max(-1, Math.floor(raw) - 1));
+    const endMode = p > 0.92;
+    const revealedCount = endMode ? races.length : Math.max(0, idx + 1);
+
+    pointNodes.forEach((node, i) => {
+      const visible = i < revealedCount;
+      const active = !endMode && i === idx;
+      node.dot.classList.toggle('visible', visible);
+      node.dot.classList.toggle('active', active);
+      node.halo.classList.toggle('active', active);
+    });
+
+    if (progressFill) progressFill.style.width = `${(p * 100).toFixed(1)}%`;
+    if (stepNow) stepNow.textContent = revealedCount;
+
+    const mode = endMode ? 'final' : (idx < 0 ? 'intro' : 'race');
+    if (idx !== currentIdx || mode !== currentMode) {
+      currentIdx = idx;
+      currentMode = mode;
+      if (mode === 'final') writeFinal();
+      else if (idx < 0) writeIntro();
+      else writeRace(races[idx]);
+    }
+
+    if (idx >= 0 && !endMode) {
+      const d = races[idx];
+      const scale = window.innerWidth < 900 ? 2.0 : 2.6;
+      const tx = W / 2 - d.x * scale;
+      const ty = H / 2 - d.y * scale;
+      camera.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+    } else {
+      camera.style.transform = 'translate(0px, 0px) scale(1)';
+    }
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  window.addEventListener('load', update);
+  writeIntro();
+  update();
+  requestAnimationFrame(update);
+  window.setTimeout(update, 250);
+  window.setTimeout(update, 800);
+})();
+
+// ═══════════════ DOMINIO EN PERSPECTIVA: ESCENARIO STICKY ═══════════════
+(function () {
+  const track = document.getElementById('dominioIntroScroll');
+  const multiTitle = document.querySelector('.dominio-title-multiline');
+  const singleTitle = document.querySelector('.dominio-title-single');
+  const headerScrim = document.querySelector('.dominio-header-scrim');
+  const leftChart = document.getElementById('dominioChartLeft');
+  const rightChart = document.getElementById('dominioChartRight');
+
+  if (!track || !multiTitle || !singleTitle || !headerScrim || !leftChart || !rightChart) return;
+
+  const desktopQuery = window.matchMedia('(min-width: 901px)');
+  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let ticking = false;
+  let desktopWasActive = false;
+
+  const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+  const rangeProgress = (progress, start, end) => clamp((progress - start) / (end - start));
+  const easeOut = (value) => 1 - Math.pow(1 - value, 3);
+  const easeInOut = (value) => value < 0.5
+    ? 4 * value * value * value
+    : 1 - Math.pow(-2 * value + 2, 3) / 2;
+  const lerp = (start, end, amount) => start + (end - start) * amount;
+
+  function clearDesktopStyles() {
+    [multiTitle, singleTitle].forEach((title) => {
+      title.style.removeProperty('top');
+      title.style.removeProperty('opacity');
+      title.style.removeProperty('transform');
+    });
+
+    headerScrim.style.removeProperty('opacity');
+
+    [leftChart, rightChart].forEach((chart) => {
+      chart.style.removeProperty('opacity');
+      chart.style.removeProperty('transform');
+      chart.style.removeProperty('pointer-events');
+    });
+  }
+
+  function updateChart(chart, progress, enterStart, enterEnd, exitStart, exitEnd) {
+    const entry = easeOut(rangeProgress(progress, enterStart, enterEnd));
+    const exit = easeInOut(rangeProgress(progress, exitStart, exitEnd));
+    const opacity = entry * (1 - exit);
+    const distance = window.innerHeight * 1.08;
+    const translateY = (1 - entry) * distance - exit * distance;
+
+    chart.style.opacity = opacity.toFixed(3);
+    chart.style.transform = 'translate3d(0, ' + translateY.toFixed(2) + 'px, 0)';
+    chart.style.pointerEvents = opacity > 0.98 ? 'auto' : 'none';
+  }
+
+  function updateDominioScroll() {
+    if (!desktopQuery.matches || reducedMotionQuery.matches) {
+      if (desktopWasActive) clearDesktopStyles();
+      desktopWasActive = false;
+      return;
+    }
+
+    desktopWasActive = true;
+
+    const rect = track.getBoundingClientRect();
+    const total = Math.max(1, track.offsetHeight - window.innerHeight);
+    const progress = clamp(-rect.top / total);
+
+    const titleReveal = easeOut(rangeProgress(progress, 0, 0.14));
+    const titleCompact = easeInOut(rangeProgress(progress, 0.12, 0.29));
+    const multiExit = easeInOut(rangeProgress(progress, 0.18, 0.31));
+    const singleIn = easeInOut(rangeProgress(progress, 0.17, 0.3));
+    const titleTop = clamp(window.innerHeight * 0.12, 96, 116);
+    const multiTop = lerp(window.innerHeight * 0.5, titleTop, titleCompact);
+    const multiOpacity = titleReveal * (1 - multiExit);
+    const multiOffset = (1 - titleReveal) * 26 - titleCompact * 8;
+    const multiScale = 0.97 + titleReveal * 0.03 - titleCompact * 0.08;
+    const singleOffset = (1 - singleIn) * 14;
+    const singleScale = 0.985 + singleIn * 0.015;
+
+    multiTitle.style.top = multiTop.toFixed(2) + 'px';
+    multiTitle.style.opacity = multiOpacity.toFixed(3);
+    multiTitle.style.transform = 'translate3d(-50%, -50%, 0) translateY(' + multiOffset.toFixed(2) + 'px) scale(' + multiScale.toFixed(3) + ')';
+    singleTitle.style.top = titleTop.toFixed(2) + 'px';
+    singleTitle.style.opacity = singleIn.toFixed(3);
+    singleTitle.style.transform = 'translate3d(-50%, -50%, 0) translateY(' + singleOffset.toFixed(2) + 'px) scale(' + singleScale.toFixed(3) + ')';
+    headerScrim.style.opacity = easeInOut(rangeProgress(progress, 0.18, 0.31)).toFixed(3);
+
+    updateChart(leftChart, progress, 0.27, 0.44, 0.74, 0.97);
+    updateChart(rightChart, progress, 0.44, 0.61, 0.74, 0.97);
+  }
+
+  function requestUpdate() {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(() => {
+      updateDominioScroll();
+      ticking = false;
+    });
+  }
+
+  function listenToMedia(query) {
+    if (query.addEventListener) query.addEventListener('change', requestUpdate);
+    else query.addListener(requestUpdate);
+  }
+
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate);
+  window.addEventListener('load', requestUpdate);
+  listenToMedia(desktopQuery);
+  listenToMedia(reducedMotionQuery);
+  requestUpdate();
+  window.setTimeout(requestUpdate, 250);
+  window.setTimeout(requestUpdate, 800);
+})();
+
+// ═══════════════ EL GOAT: APARICIÓN CONTROLADA POR SCROLL ═══════════════
+(function () {
+  const track = document.getElementById('goatIntroScroll');
+  const header = document.getElementById('goatIntroHeader');
+
+  if (!track || !header) return;
+
+  const desktopQuery = window.matchMedia('(min-width: 901px)');
+  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const root = document.documentElement;
+  let ticking = false;
+  let desktopWasActive = false;
+
+  const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+  const rangeProgress = (progress, start, end) => clamp((progress - start) / (end - start));
+  const easeOut = (value) => 1 - Math.pow(1 - value, 3);
+
+  function clearDesktopStyles() {
+    header.style.removeProperty('opacity');
+    header.style.removeProperty('transform');
+  }
+
+  function updateGoatIntro() {
+    if (!desktopQuery.matches || reducedMotionQuery.matches) {
+      if (desktopWasActive) clearDesktopStyles();
+      desktopWasActive = false;
+      return;
+    }
+
+    desktopWasActive = true;
+
+    const rect = track.getBoundingClientRect();
+    const total = Math.max(1, track.offsetHeight - window.innerHeight);
+    const progress = clamp(-rect.top / total);
+    const reveal = easeOut(rangeProgress(progress, 0.08, 0.42));
+    const translateY = (1 - reveal) * 32;
+    const scale = 0.97 + reveal * 0.03;
+
+    header.style.opacity = reveal.toFixed(3);
+    header.style.transform = 'translate3d(0, ' + translateY.toFixed(2) + 'px, 0) scale(' + scale.toFixed(3) + ')';
+  }
+
+  function requestUpdate() {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(() => {
+      updateGoatIntro();
+      ticking = false;
+    });
+  }
+
+  function listenToMedia(query) {
+    if (query.addEventListener) query.addEventListener('change', requestUpdate);
+    else query.addListener(requestUpdate);
+  }
+
+  root.classList.add('goat-scroll-ready');
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate);
+  window.addEventListener('load', requestUpdate);
+  listenToMedia(desktopQuery);
+  listenToMedia(reducedMotionQuery);
+  requestUpdate();
+  window.setTimeout(requestUpdate, 250);
+  window.setTimeout(requestUpdate, 800);
+})();
+
+</script>
+
+<div class="mosaic-overlay" id="mosaicOverlay"></div>
+
+</body>
+</html>
