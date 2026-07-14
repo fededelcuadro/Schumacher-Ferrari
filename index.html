@@ -474,11 +474,15 @@ section { position: relative; }
 /* ─── CHAPTER WRAPPER ─── */
 #chapters { background: var(--black); }
 
+.empty {
+  padding-bottom: 800px;
+}
+
 .halfempty {
   padding-bottom: 400px;
 }
 
-.empty {
+.quadempty {
   padding-bottom: 600px;
 }
 
@@ -3038,7 +3042,7 @@ html.goat-scroll-ready #goat .goat-intro-header {
       <div class="ghosts-stage">
         <!-- Video de fondo (poné tu archivo en assets/fantasmas.mp4) -->
         <video class="ghosts-video" autoplay muted loop playsinline poster="assets/fantasmas-poster.jpg">
-          <source src="https://res.cloudinary.com/bezunuyz/video/upload/2000-web_u7ir4b.mp4" type="video/mp4">
+          <source src="assets/fantasmas.mp4" type="video/mp4">
         </video>
         <div class="ghosts-overlay"></div>
         <div class="ghosts-eyebrow">1996 — 1999</div>
@@ -3136,7 +3140,7 @@ html.goat-scroll-ready #goat .goat-intro-header {
         <div class="video-container" id="videoContainer">
           <!-- Added autoplay and muted attributes here -->
           <video id="customVideo" poster="assets/suzuka-2000-poster.jpg" playsinline autoplay muted loop>
-            <source src="assets/2000.mp4" type="video/mp4">
+            <source src="https://res.cloudinary.com/bezunuyz/video/upload/2000-web_u7ir4b.mp4" type="video/mp4">
           </video>
         
           <!-- Progress Bar (Timeline) -->
@@ -3182,7 +3186,7 @@ html.goat-scroll-ready #goat .goat-intro-header {
           sentí que casi estaba atrapado dentro de mi auto, mi Ferrari. Era como si estuvieras a punto 
           de estallar. ¡Fue una liberación enorme! ¡Un alivio inmenso!"
         </p>
-        <div class="quote-attr">- MICHAEL SCHUMACHER · 2000</div>
+        <div class="quote-attr">- MICHAEL SCHUMACHER</div>
         <!-- NOTA: reemplazar con cita real verificada -->
       </div>
 
@@ -3235,7 +3239,7 @@ html.goat-scroll-ready #goat .goat-intro-header {
   <!-- ─── 2001 ─── -->
   <article class="chapter" id="year-2001">
     <div class="chapter-sticky">
-      <img class="sch-corner-photo" src="assets/sch-2001.png" style="padding-left: 80px; height: 475px">
+      <img class="sch-corner-photo" src="assets/sch-2001.png" style="padding-left: 120px; height: 475px">
 
       <div class="starting-lights">
         <div class="light"></div>
@@ -3307,7 +3311,7 @@ html.goat-scroll-ready #goat .goat-intro-header {
           <iframe class="f2001" style="border-radius: 6px;" title="Ferrari F2001 - Tribute to Michael Schumacher" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/1597a6a00d164f5ca8852ad40e96a89b/embed?ui_theme=dark"> </iframe> </div>
       </div>
 
-      <div class="empty"></div>
+      <div class="quadempty"></div>
 
       <div class="content-card">
         <div class="card-label">DOMINIO SOBRE EL COMPAÑERO Y LA COMPETENCIA</div>
@@ -3484,7 +3488,7 @@ html.goat-scroll-ready #goat .goat-intro-header {
   <!-- ─── 2003 ─── -->
   <article class="chapter" id="year-2003">
     <div class="chapter-sticky">
-      <img class="sch-corner-photo" src="assets/sch-2003.png" style="padding-left: 40px;">
+      <img class="sch-corner-photo" src="assets/sch-2003.png" style="padding-left: 100px;">
 
       <div class="starting-lights">
         <div class="light"></div>
@@ -3726,7 +3730,7 @@ html.goat-scroll-ready #goat .goat-intro-header {
           </div>
         </div>
         <!-- ESPACIO PARA AUDIO REAL -->
-        <audio id="motor-f2004" src="audio/f2004-v10.mp3"></audio>
+        <audio id="motor-f2004" src="assets/f2004-v10.mp3" preload="metadata"></audio>
       </div>
 
       <div class="empty"></div>
@@ -3959,10 +3963,10 @@ html.goat-scroll-ready #goat .goat-intro-header {
     <div class="footer-col">
       <h4>CRÉDITOS</h4>
       <ul>
-        <li><strong>Autores</strong><br><em>[Nombre(s) del equipo]</em></li>
-        <li><strong>Materia</strong><br><em>[Nombre de la materia]</em></li>
-        <li><strong>Institución</strong><br><em>[Nombre]</em></li>
-        <li><strong>Año</strong><br><em>2024 / 2025</em></li>
+        <li><strong>Autores</strong><br><em>Bautista Goya<br>Federico Del Cuadro<br>José Nicolás Rodríguez López</em></li>
+        <li><strong>Materia</strong><br><em>Visualización de Datos</em></li>
+        <li><strong>Institución</strong><br><em>Universidad Torcuato Di Tella</em></li>
+        <li><strong>Año</strong><br><em>2026</em></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -3972,22 +3976,8 @@ html.goat-scroll-ready #goat .goat-intro-header {
         <li>FIA Official Statistics</li>
         <li>Formula1.com Historical Data</li>
         <li>StatsF1.com</li>
-        <li><em>[Agregar fuentes adicionales]</em></li>
       </ul>
     </div>
-  </div>
-  <div class="footer-col" style="margin-bottom:32px">
-    <h4>CRÉDITOS MULTIMEDIA</h4>
-    <ul style="list-style:none; display:flex; flex-wrap:wrap; gap:8px 32px;">
-      <li style="font-size:12px; color:var(--grey)">📸 Imágenes: <em><a href="https://www.michael-schumacher.de/en">Página Oficial de Michael Schumacher</a></em></li>
-      <li style="font-size:12px; color:var(--grey)">🎬 Videos: <em>[YouTube / archivos propios]</em></li>
-      <li style="font-size:12px; color:var(--grey)">🔊 Audio: <em>[Fuente del sonido del motor]</em></li>
-      <li style="font-size:12px; color:var(--grey)">🗺 Mapa: <em>[OpenStreetMap / Mapbox / Leaflet.js]</em></li>
-    </ul>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2025 — Template de scrollytelling · Todos los derechos de imágenes pertenecen a sus respectivos propietarios</p>
-    <div class="footer-logo">MSC</div>
   </div>
 </footer>
 
